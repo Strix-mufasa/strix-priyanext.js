@@ -1,0 +1,54 @@
+.card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.5rem 1rem;
+  border-radius: 5rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: #fff;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  /* Background image settings */
+  background-image: url('/assets/img/btn-norm.webp');
+  background-position: center;
+  background-size: 100% 100%; /* Stretch image to cover full button */
+  background-repeat: no-repeat;
+
+  /* Makes button grow with text */
+  width: auto;
+  min-width: max-content; 
+  height: 3rem;
+}
+
+.card-btn:hover {
+  background-image: url('/assets/img/btn-norm2.webp');
+}
+
+.card-btn-p {
+  margin: 0;
+  padding: 0 1rem; /* Ensures spacing inside */
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 10%;
+  font-family: cd-reg;
+  /* line-height: 1.2; */
+}
+
+.card-btn:active{
+  background-image: url('/assets/img/btn-active.webp');
+}
+
+/* 🔹 Mobile responsive */
+@media (max-width: 770px) {
+  .card-btn{
+     padding: 0.4rem 1rem; 
+    background-size: 100% 100%; /* stays adaptive */
+  }
+
+  .card-btn-p {
+    font-size: 10px;
+  }
+}
+

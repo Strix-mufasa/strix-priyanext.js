@@ -1,0 +1,371 @@
+.note-return{
+    margin-top: 10%;
+    position: relative;
+    z-index: 5;
+}
+
+.note-hero{
+    margin-bottom: 10%;
+    margin-top: -20vh;
+}
+
+
+
+      .cookie-policy {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 40px 20px;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          line-height: 1.6;
+          color: #ffffff;
+        }
+
+        .policy-header {
+          margin-bottom: 30px;
+          padding-bottom: 20px
+        }
+
+        .effective-date,
+        .last-updated {
+          margin: 5px 0;
+          color: #ffffff;
+          font-size: 16px;
+        }
+
+        .policy-intro {
+          margin-bottom: 40px;
+        }
+
+        .policy-intro p {
+          font-size: 16px;
+          line-height: 1.8;
+        }
+
+        .policy-section {
+          margin-bottom: 40px;
+        }
+
+        .policy-section h2 {
+          font-size: 16px;
+          font-weight: 500;
+          color: #ffffff;
+          margin-bottom: 10px;
+          margin-top: 0;
+        }
+
+        .policy-section p {
+          margin: 12px 0;
+          font-size: 15px;
+        }
+
+        .subsection {
+          margin: 24px 0;
+          padding-left: 20px;
+        }
+
+        .subsection h3 {
+          font-size: 16px;
+          font-weight: 500;
+          color: #ffffff;
+          margin-top: 0;
+        }
+
+        .policy-section ul {
+          margin: 12px 0;
+          padding-left: 20px;
+        }
+
+        .policy-section li {
+          margin: 8px 0;
+          font-size: 15px;
+          list-style-type: disc;
+        }
+
+        .contact-info {
+          margin-top: 16px;
+        }
+
+        .contact-info p {
+          margin: 8px 0;
+        }
+
+        .contact-info strong {
+          color: #ffffff;
+        }
+
+        .policy-footer {
+          margin-top: 50px;
+          text-align: center;
+        }
+
+        .policy-footer p {
+          font-size: 16px;
+          color: #ffffff;
+          margin-bottom: 10%;
+        }
+
+        @media (max-width: 768px) {
+          .cookie-policy {
+            padding: 30px 16px;
+          }
+
+          .policy-section h2 {
+            font-size: 20px;
+          }
+
+          .subsection h3 {
+            font-size: 16px;
+          }
+
+          .subsection {
+            padding-left: 12px;
+          }
+        }
+
+
+
+
+
+        /* ===================Term of ervice===================== */
+
+
+
+
+          .terms-of-service {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 40px 20px;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          line-height: 1.6;
+          color: #ffffff;
+        }
+
+        .terms-header {
+          margin-bottom: 30px;
+          padding-bottom: 20px;
+        }
+
+        .terms-header h1 {
+          font-size: 32px;
+          font-weight: 700;
+          color: #ffffff;
+          margin: 0 0 16px 0;
+        }
+
+        .date-info {
+          margin: 5px 0;
+          color: #ffffff;
+          font-size: 16px;
+        }
+
+        .terms-intro {
+          margin-bottom: 40px;
+          font-size: 16px;
+          line-height: 1.8;
+        }
+
+        .terms-section {
+          margin-bottom: 40px;
+        }
+
+        .terms-section h2 {
+          font-size: 16px;
+          font-weight: 500;
+          color: #ffffff;
+          margin-bottom: 16px;
+          margin-top: 0;
+        }
+
+        .terms-section p {
+          margin: 12px 0;
+          font-size: 15px;
+        }
+
+        .terms-section ul {
+          margin: 12px 0;
+          padding-left: 20px;
+        }
+
+        .terms-section li {
+          margin: 8px 0;
+          font-size: 15px;
+          list-style-type: disc;
+        }
+
+        .highlight-box {
+
+        }
+
+        .highlight-box p {
+          margin: 8px 0;
+        }
+
+        .contact-info {
+        }
+
+        .contact-info p {
+          margin: 8px 0;
+        }
+
+        .contact-info strong {
+          color: #ffffff;
+        }
+
+        .terms-footer {
+          margin-top: 50px;
+          text-align: center;
+        }
+
+        .terms-footer p {
+          font-size: 16px;
+          color: #ffffff;
+          padding-bottom: 10%;
+        }
+
+        @media (max-width: 768px) {
+          .terms-of-service {
+            padding: 30px 16px;
+          }
+
+          .terms-header h1 {
+            font-size: 26px;
+          }
+
+          .terms-section h2 {
+            font-size: 20px;
+          }
+        }
+
+
+
+
+
+        /* ==================Privacy Policy======================== */
+
+
+      .privacy-policy {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 40px 20px;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          line-height: 1.6;
+          color: #ffffff;
+        }
+
+        .privacy-header {
+          margin-bottom: 30px;
+          padding-bottom: 20px;
+        }
+
+        .privacy-header h1 {
+          font-size: 32px;
+          font-weight: 700;
+          color: #ffffff;
+          margin: 0 0 16px 0;
+        }
+
+        .date-info {
+          margin: 5px 0;
+          color: #ffffff;
+          font-size: 16px;
+        }
+
+        .privacy-intro {
+          margin-bottom: 40px;
+          font-size: 16px;
+          line-height: 1.8;
+        }
+
+        .privacy-section {
+          margin-bottom: 40px;
+        }
+
+        .privacy-section h2 {
+          font-size: 16px;
+          font-weight: 600;
+          color: #ffffff;
+          margin-top: 0;
+        }
+
+        .privacy-section p {
+          margin: 12px 0;
+          font-size: 15px;
+        }
+
+        .subsection {
+          margin: 24px 0;
+          padding-left: 20px;
+        }
+
+        .subsection h3 {
+          font-size: 18px;
+          font-weight: 600;
+          color: #ffffff;
+          margin-bottom: 12px;
+          margin-top: 0;
+        }
+
+        .privacy-section ul {
+          margin: 12px 0;
+          padding-left: 20px;
+        }
+
+        .privacy-section li {
+          margin: 8px 0;
+          font-size: 15px;
+          list-style-type: disc;
+        }
+
+
+        .highlight-box p {
+          margin: 8px 0;
+          font-weight: 500;
+        }
+
+
+
+        .info-box p {
+          margin: 8px 0;
+        }
+
+
+        .contact-info p {
+          margin: 8px 0;
+        }
+
+        .contact-info strong {
+          color: #ffffff;
+        }
+
+        .privacy-footer {
+          margin-top: 50px;
+          text-align: center;
+        }
+
+        .privacy-footer p {
+          font-size: 16px;
+          color: #ffffff;
+          padding-bottom: 10%;
+        }
+
+        @media (max-width: 768px) {
+          .privacy-policy {
+            padding: 30px 16px;
+          }
+
+          .privacy-header h1 {
+            font-size: 26px;
+          }
+
+          .privacy-section h2 {
+            font-size: 20px;
+          }
+
+          .subsection {
+            padding-left: 12px;
+          }
+
+          .subsection h3 {
+            font-size: 16px;
+          }
+        }

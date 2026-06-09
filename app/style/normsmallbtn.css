@@ -1,0 +1,58 @@
+.btn-norm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 500;
+  color: #fff;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  background-image: url('/assets/img/btn-norm.webp');
+  background-position: center;
+  background-size: 100% 100%; /* Stretch image to cover full button */
+  background-repeat: no-repeat;
+  width: fit-content;
+  min-width: max-content;
+  padding-top: 1rem;
+  padding-bottom: 1.8rem;
+  padding-left: 1.8rem;
+       font-family: 'Clash Display', sans-serif;
+   font-weight: 500;
+  padding-right: 1.8rem;
+}
+
+.space-btn{
+  width: 100%;
+  height: 100%;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+
+.btn-norm:hover {
+  background-image: url('/assets/img/btn-norm2.webp');
+}
+
+.space-btn .btn-p {
+  margin: 0 !important;
+  text-align: center;
+  font-size: 1rem;
+       font-family: 'Clash Display', sans-serif;
+   font-weight: 500;
+}
+
+.btn-norm:active{
+  background-image: url('/assets/img/btn-active.webp');
+}
+
+/* 🔹 Mobile responsive */
+@media (max-width: 770px) {
+  
+
+  .btn-p {
+    font-size: 14px;
+  }
+}
+

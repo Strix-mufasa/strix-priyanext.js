@@ -1,26 +1,123 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Clash Display — .otf not .ttf! */
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/assets/fonts/ClashDisplay-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/assets/fonts/ClashDisplay-Semibold.otf') format('opentype');
+  font-weight: 600;
+}
+
+/* Epilogue */
+@font-face {
+  font-family: 'Epilogue';
+  src: url('/assets/fonts/Epilogue-Black.ttf') format('truetype');
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: 'Epilogue';
+  src: url('/assets/fonts/Epilogue-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Epilogue';
+  src: url('/assets/fonts/Epilogue-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'Epilogue';
+  src: url('/assets/fonts/Epilogue-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'Epilogue';
+  src: url('/assets/fonts/Epilogue-Light.ttf') format('truetype');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Epilogue';
+  src: url('/assets/fonts/Epilogue-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Epilogue';
+  src: url('/assets/fonts/Epilogue-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Epilogue';
+  src: url('/assets/fonts/Epilogue-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+
+/* Nasalization — .otf */
+@font-face {
+  font-family: 'Nasalization';
+  src: url('/assets/fonts/nasalization.otf') format('opentype');
+  font-weight: 400;
+}
+
+/* Syne */
+@font-face {
+  font-family: 'Syne';
+  src: url('/assets/fonts/Syne-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Syne';
+  src: url('/assets/fonts/Syne-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'syne-med';
+  src: url('/assets/fonts/Syne-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Syne';
+  src: url('/assets/fonts/Syne-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Syne';
+  src: url('/assets/fonts/Syne-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Syne';
+  src: url('/assets/fonts/Syne-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }

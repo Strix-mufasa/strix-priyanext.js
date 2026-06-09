@@ -1,0 +1,29 @@
+.logo-loop {
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.logo-strip {
+  display: flex;
+  flex-wrap: nowrap;
+  will-change: transform; /* improves smoothness */
+}
+
+.logo-item {
+  flex: 0 0 auto;
+  padding: 0 2rem;
+}
+
+.logo-item img {
+  height: 2rem;
+  width: auto;
+}
+
+@media (max-width: 770px) {
+  .logo-item img {
+  height: 1.5rem;
+  width: auto;
+}
+}
+

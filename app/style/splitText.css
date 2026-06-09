@@ -1,0 +1,56 @@
+@font-face {
+  font-display: block;
+  font-family: Mori;
+  font-style: normal;
+  font-weight: 900;
+  src: url("https://assets.codepen.io/16327/PPMori-SemiBold.woff")
+    format("woff");
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.split-multiple-fixed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Mori";
+  background: radial-gradient(
+      129% 99% at 112% 85%,
+      rgb(223, 220, 255) 20%,
+      rgb(166, 158, 255) 90%
+    ),
+    url("https://assets.codepen.io/16327/noise-e82662fe.png");
+  background-blend-mode: color-dodge;
+}
+
+.container {
+  width: 90vw;
+  margin-top: 40vh;
+}
+
+.split {
+  opacity: 0; /* we set to 1 via GSAP.set in JS so SplitText masks still work */
+  text-align: center;
+  color: #0e100f;
+  font-size: 2rem;
+  will-change: transform;
+}
+
+.split * {
+  will-change: transform;
+}
+
+.spacer {
+  height: 40vh;
+}
+
+.line {
+  overflow: hidden;
+  display: block;
+}
+

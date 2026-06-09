@@ -1,0 +1,284 @@
+.footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+}
+
+
+
+.footer p{
+  background: linear-gradient(to bottom, #FCFCFD, #969697);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 20px;
+  flex-direction: column;
+  position: relative;
+      z-index: 5;
+      margin-bottom: 1rem !important;
+}
+
+.quote {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+}
+
+.quote1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.quote1 p{
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.email-card{
+    padding: 5% 8%;
+    width: fit-content;
+background: #111111;
+background: -webkit-linear-gradient(116deg, #111111 0%, #111111 50%, #3b3b3b 100%);
+background: linear-gradient(116deg, #111111 0%, #111111 50%, #3b3b3b 100%);
+border: #fcfcfd5a solid 1px;
+border-radius: 5rem;
+display: flex;
+align-items: start;
+justify-content: center;
+font-size: 14px;
+}
+
+.ft-link-con{
+        display: flex;
+    align-items: start;
+    justify-content: space-between;
+    width: 70%;
+    margin-top: 5%;
+    position: relative;
+      z-index: 5;
+}
+
+.ft-links{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-direction: column;
+    text-align: start;
+}
+
+.ft-links .hea{
+    margin-bottom: 5px;
+    color: #fff !important;
+}
+
+.ft-num{
+    color: #fff !important;
+    font-size: 15px !important;
+    text-align: start !important;
+    margin-bottom: 0;
+}
+
+.hea{
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 550;
+    margin-bottom: 1.2rem !important;
+}
+
+.ft-icon{
+  position: relative;
+      z-index: 5;
+      margin-top: 1rem;
+}
+
+.ft-num{
+    font-family: ep-reg;
+    margin-bottom: 0.3rem;
+}
+
+.ft-links ul li{
+    font-family: ep-reg;
+    padding: 0;
+    margin-bottom: 0.3rem;
+    margin-right: 1rem;
+    margin-bottom: 18px;
+}
+
+.ft-links ul {
+    padding: 0 10px;
+      background: linear-gradient(to bottom, #FCFCFD, #969697);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 13px;
+}
+
+.ri--behance-fill {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M7.443 5.35c.639 0 1.23.05 1.77.198c.541.099.984.297 1.377.544q.591.371.885 1.039c.197.445.296.99.296 1.583c0 .693-.148 1.286-.492 1.731c-.295.446-.787.841-1.377 1.138c.836.248 1.475.693 1.869 1.286s.639 1.336.639 2.177c0 .693-.148 1.286-.394 1.781c-.245.495-.639.94-1.082 1.237a5.1 5.1 0 0 1-1.573.692c-.59.149-1.18.248-1.77.248H1V5.35zm-.394 5.54c.541 0 .984-.148 1.328-.395s.492-.693.492-1.237c0-.297-.05-.594-.148-.791s-.246-.347-.442-.495a2.4 2.4 0 0 0-.64-.247c-.246-.05-.491-.05-.787-.05H4v3.216zm.148 5.838c.295 0 .59-.05.836-.099c.246-.05.492-.148.688-.297a1.8 1.8 0 0 0 .492-.544c.098-.247.197-.544.197-.89c0-.693-.197-1.188-.59-1.534c-.394-.297-.935-.445-1.574-.445H4v3.81zm9.492-.05q.59.594 1.77.594c.541 0 1.033-.148 1.426-.395q.591-.446.738-.891h2.41c-.394 1.187-.984 2.028-1.77 2.572c-.788.495-1.722.792-2.853.792a5.8 5.8 0 0 1-2.115-.396a3.9 3.9 0 0 1-1.574-1.088a3.9 3.9 0 0 1-.983-1.633c-.246-.643-.345-1.335-.345-2.127c0-.742.099-1.434.345-2.078a5.3 5.3 0 0 1 1.033-1.682c.442-.445.983-.84 1.573-1.088a5.5 5.5 0 0 1 2.066-.396c.836 0 1.574.149 2.213.495c.64.346 1.131.742 1.524 1.336c.394.544.69 1.187.886 1.88c.098.692.147 1.385.098 2.176H16c0 .792.295 1.534.689 1.93m3.098-5.194c-.344-.346-.885-.544-1.525-.544a2.34 2.34 0 0 0-1.082.247c-.295.149-.491.347-.688.545a1.3 1.3 0 0 0-.344.692c-.05.248-.099.445-.099.643h4.426c-.098-.742-.344-1.236-.688-1.583M15.459 6.29h5.508v1.336H15.46z'/%3E%3C/svg%3E");
+}
+
+.icon-park-outline--dribble {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='4'%3E%3Cpath d='M44 24a19.94 19.94 0 0 1-5.889 14.173A19.94 19.94 0 0 1 24 44C12.954 44 4 35.046 4 24a19.93 19.93 0 0 1 5.5-13.775A19.94 19.94 0 0 1 24 4a19.94 19.94 0 0 1 14.111 5.827A19.94 19.94 0 0 1 44 24'/%3E%3Cpath d='M44 24c-2.918 0-10.968-1.1-18.173 2.063C18 29.5 12.333 34.832 9.863 38.147'/%3E%3Cpath d='M16.5 5.454C19.63 8.343 26.46 15.698 29 23s3.48 16.28 4.06 18.835'/%3E%3Cpath d='M4.154 21.5c3.778.228 13.779.433 20.179-2.3s11.907-7.76 13.796-9.355M5.5 31.613a20.08 20.08 0 0 0 9 9.991'/%3E%3Cpath d='M4 24a19.93 19.93 0 0 1 5.5-13.775M24 4a19.94 19.94 0 0 0-14.5 6.225M32 5.664a20 20 0 0 1 6.111 4.163A19.94 19.94 0 0 1 44 24c0 2.462-.445 4.821-1.26 7M24 44a19.94 19.94 0 0 0 14.111-5.827'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.mdi--instagram {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3'/%3E%3C/svg%3E");
+}
+
+.ri--twitter-x-line {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M10.488 14.651L15.25 21h7l-7.858-10.478L20.93 3h-2.65l-5.117 5.886L8.75 3h-7l7.51 10.015L2.32 21h2.65zM16.25 19L5.75 5h2l10.5 14z'/%3E%3C/svg%3E");
+}
+
+.akar-icons--linkedin-v1-fill {
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' fill-rule='evenodd' d='M1 2.838A1.84 1.84 0 0 1 2.838 1H21.16A1.837 1.837 0 0 1 23 2.838V21.16A1.84 1.84 0 0 1 21.161 23H2.838A1.84 1.84 0 0 1 1 21.161zm8.708 6.55h2.979v1.496c.43-.86 1.53-1.634 3.183-1.634c3.169 0 3.92 1.713 3.92 4.856v5.822h-3.207v-5.106c0-1.79-.43-2.8-1.522-2.8c-1.515 0-2.145 1.089-2.145 2.8v5.106H9.708zm-5.5 10.403h3.208V9.25H4.208zM7.875 5.812a2.063 2.063 0 1 1-4.125 0a2.063 2.063 0 0 1 4.125 0' clip-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+
+.ft-icon{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.ft-icon img{
+    width: 2.5rem;
+}
+
+.ft-line{
+   height: 1px;
+   width: 60%;
+   background-color: #fcfcfd40;
+   margin: 2rem;
+   position: relative;
+      z-index: 5;
+}
+
+.ft-last{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   height: fit-content;
+}
+
+.ft-last h2{
+          font-family: syne-bold;
+  background: linear-gradient(to bottom, #FCFCFD, #969697);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+ z-index: 2;
+  letter-spacing: 90px;
+  font-size: 15vw;
+  position: relative;
+   filter: drop-shadow(0px 4px  rgba(0, 0, 0, 0.25));
+   filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.474));
+   text-align: center;
+   margin: 0%;
+   margin-left: 7%;
+}
+
+.ft-bottom{
+     display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+}
+
+.ft-bottom p{
+  font-size: 19px;
+}
+
+.scroll-top{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.scroll-top p{
+  font-size: 19px;
+}
+
+.scroll-top img{
+  width: 1rem;
+  height: 1rem;
+  object-fit: cover;
+
+}
+
+.nothing{
+  /* visibility: hidden; */
+}
+
+.footerImg{
+  position: absolute;
+  width: 100%;
+  height: auto;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  max-height: 1000px;
+}
+
+.footerImg-mobile{
+  display: none;
+}
+
+.footer-pp{
+  font-size: 18px;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 770px) {
+  .ft-num{
+    font-size: 14px !important;
+  }
+
+  .footer-pp{
+  font-size: 14px !important;
+}
+
+.ft-year{
+  font-size: 12px !important;
+}
+}
+
+
+
+/* git status */
+/* git add . */
+/* git commit -m "scroll trigger adjust" */
+/* git push origin main */

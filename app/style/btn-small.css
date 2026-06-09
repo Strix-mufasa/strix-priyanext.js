@@ -1,0 +1,98 @@
+.btn-small {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.5s ease-in-out;
+  gap: 7px !important;
+  background-image: url('/assets/img/btn-norm.webp');
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 10;
+  position: relative;
+  width: fit-content;
+  min-width: max-content;
+  padding-top: 1rem;
+  padding-bottom: 1.8rem;
+  padding-left: 1.8rem;
+  padding-right: 1.8rem;
+  margin: 0 !important;
+  font-family: cd-red;
+}
+
+.space-btn{
+  width: 100%;
+  height: 100%;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+    margin: 0 !important;
+}
+
+
+
+.btn-small:hover {
+  background-image: url('/assets/img/btn-norm2.webp');
+}
+
+.btn-small-p {
+  margin: 0;
+  padding: 0 !important; 
+  text-align: center;
+  font-size: 1rem;
+     font-family: 'Clash Display', sans-serif;
+   font-weight: 500;
+  margin-right: 0.3rem !important;  /* line-height: 1.2; */
+}
+
+.small-btn-arrow{
+  background-image: url('/assets/img/btn-arrow.webp');
+  width: 1vw;
+  height: 1vw;
+  background-size: cover;
+  background-size: cover;
+   transition: transform 0.5s ease;
+}
+
+.btn-small:hover .small-btn-arrow{
+  transform: rotate(44deg);
+}
+
+.btn-small:active{
+  background-image: url('/assets/img/btn-active.webp');
+}
+
+@media (min-width: 140px) {
+  /* .btn-small{
+    padding: 2.6vw 2.7vw;
+  } */
+
+  .btn-small-p{
+    font-size: 1.2vw;
+  }
+
+}
+
+/* 🔹 Mobile responsive */
+@media (max-width: 770px) {
+  .btn-small {
+    /* padding: 1.7rem 1.5rem; */
+    background-size: 100% 100%; /* stays adaptive */
+  }
+
+  .btn-small-p {
+    font-size: 12px;
+  }
+
+  .small-btn-arrow{
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+}
+
+
+
+

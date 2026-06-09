@@ -1,0 +1,100 @@
+.notfound-page {
+    background-color: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.notfound-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5% 5%;
+    position: relative;
+    overflow: hidden;
+}
+
+.notfound-content::before {
+    content: '';
+    position: absolute;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, rgba(0, 230, 165, 0.1) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.notfound-glass {
+    background: rgba(20, 20, 20, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+    padding: 4rem;
+    text-align: center;
+    z-index: 10;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.notfound-title {
+    font-family: 'syne-bold', sans-serif;
+    font-size: 8rem;
+    margin: 0;
+    background: linear-gradient(to bottom, #FCFCFD, #969697);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+}
+
+.notfound-line {
+    width: 60px;
+    height: 2px;
+    background: #00E6A5;
+    margin: 2rem auto;
+}
+
+.notfound-text {
+    font-family: 'ep-reg', sans-serif;
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+.notfound-btn {
+    display: inline-block;
+    padding: 1.2rem 2.5rem;
+    background: #00E6A5;
+    color: #000;
+    border-radius: 5rem;
+    font-family: 'cd-bold', sans-serif;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.4, 0.25, 1);
+}
+
+.notfound-btn:hover {
+    background: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 230, 165, 0.3);
+}
+
+@media (max-width: 768px) {
+    .notfound-title {
+        font-size: 5rem;
+    }
+
+    .notfound-glass {
+        padding: 3rem 1.5rem;
+    }
+
+    .notfound-text {
+        font-size: 1rem;
+    }
+}

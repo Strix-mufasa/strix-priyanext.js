@@ -1,0 +1,39 @@
+.image-container::before,
+.image-container::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;            /* only 50% width */
+  height: 8px;           /* small height */
+  border-radius: 50%;    /* smooth fading edges */
+  pointer-events: none;
+}
+
+.image-container::before {
+  top: 0;
+  box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.image-container::after {
+  bottom: 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+button:hover{
+  border: none;
+}
+
+.p-carousel-container{
+  height: 40rem;
+}
+
+.p-carousel-con{
+  height: clamp(320px, 60vh, 400px);
+}
+
+@media (max-width: 770px){
+  .p-carousel-con{
+  height: 20rem !important;
+}
+}

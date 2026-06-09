@@ -1,0 +1,174 @@
+.containerNav{
+    width: 100%;
+    position: fixed;
+    top:5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     z-index: 9999;
+}
+
+.nav{
+    height: 6rem;
+    width: 90%;
+    background: rgba(0,0,0,0.3) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(0,0,0,0.15) !important;
+    color: #fff ;
+    height: 3.5rem;
+    padding: 0 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid transparent; /* thickness of border */
+    border-radius: 8rem !important;
+    position: relative;
+    
+
+    
+}
+
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px; /* border thickness */
+  border-radius: inherit;
+  background: linear-gradient(to right, #ffffff, #000000, #ffffff);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+.left {
+  height: 100%;
+  padding: 0 1rem; /* some breathing room */
+  width: 8rem; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left img{
+  height: 60%;
+}
+
+.left .linenav{
+    width: 1.6px;
+    height: 35%;
+    background-color: #fff;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.179);
+}
+
+.left p{
+    font-family: syne-med;
+    font-size: 20px;
+      filter: drop-shadow(0px 4px  rgba(0, 0, 0, 0.25));
+   filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.474));
+}
+
+
+.mid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* ✅ 3 equal columns */
+  align-items: center;
+  justify-items: center; /* centers each item inside its cell */
+  width: 30%; /* keeps the overall container fixed at 30% */
+  font-family: ep-med;
+  font-size: 14px;
+  gap: 1rem; /* optional: space between items */
+}
+
+
+.nav-link{
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+   padding: 1rem 1.2rem !important;
+}
+
+.nav-link:hover{
+  margin-top: 0.7rem;
+}
+
+.right{
+    width: 8rem;
+    background-color: red;
+    position: relative;
+    z-index: 10;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 30px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  z-index: 10;
+  width: 6rem;
+}
+
+.linenav {
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.top {
+  width: 35px;
+  margin-left: 10px;
+  margin-bottom: 6px;
+}
+.bottom {
+  width: 35px;
+  margin-left: 20px;
+}
+
+
+.hamburger:hover .top{
+  margin-left: 15px;
+}
+
+.hamburger:hover .bottom{
+    margin-left: 15px;
+
+}
+
+/* Initial hidden state */
+.nav {
+  opacity: 0;
+  transform: translateY(-80px);
+}
+
+/* Animation applied on mount */
+.animate-nav {
+  animation: navDrop 0.5s ease-out forwards;
+  animation-delay: 1.9s; /* like GSAP delay */
+}
+
+@keyframes navDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media (max-width: 770px) {
+  .mid{
+    display: none;
+  }
+}
+

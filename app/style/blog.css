@@ -1,0 +1,269 @@
+
+
+.blog{
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 9%;
+    padding-bottom: 5rem; /* Add padding to prevent footer overlap */
+}
+
+.blog-header{
+      font-family: syne-med !important;
+  background: linear-gradient(to bottom, #969697, #ffffff, #969697);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 90px;
+  max-width: 50%;
+  line-height: 7rem;
+}
+
+@media (max-width: 1500px) {
+    .blog-header{
+     font-size: 70px;
+     line-height: 6rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .blog-header{
+     font-size: 60px;
+     line-height: 5rem;
+     max-width: 70%;
+    }
+}
+
+@media (max-width: 700px) {
+    .blog-header{
+     font-size: 50px;
+     line-height: 4rem;
+     max-width: 90%;
+    }
+}
+
+@media (max-width: 700px) {
+    .blog-header{
+     font-size: 50px;
+     line-height: 4rem;
+     max-width: 90%;
+    }
+}
+
+
+@media (max-width: 440px) {
+    .blog-header{
+     font-size: 40px;
+     line-height: 3rem;
+     max-width: 90%;
+    }
+}
+
+.blog-top{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 0 5%;
+}
+
+
+/* Fix the blog content container */
+.blog-con{
+    width: 100%;
+    padding: 5% 5%;
+    display: flex;
+    min-height: auto; /* Remove fixed height */
+    align-items: flex-start; /* Align items to top */
+}
+
+
+.blog-nav{
+    width: 30%;
+}
+
+
+
+.blogcards{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+}
+
+
+
+.blogcard{
+    width: 18vw;
+    overflow-y: auto;
+    min-width: 14rem;
+    cursor: pointer;
+}
+
+.reaction{
+    width: 1.5rem;
+    height: auto;
+
+}
+
+.blog-action-btn{
+    cursor: pointer;
+}
+
+.blogcard::-webkit-scrollbar {
+    width: 6px;
+}
+
+.blogcard::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.blogcard::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 3px;
+}
+
+.blogcard::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+.blog-card{
+   background: #666666;
+background: -webkit-linear-gradient(0deg, #666666 0%, #000000 100%);
+background: linear-gradient(0deg, #666666 0%, #000000 100%);
+padding: 3.8% 0;
+border-radius: 1.5rem;
+margin-bottom: 0.8rem;
+}
+
+.blog-card img{
+    width: 90%;
+    border-radius: 1rem;
+    height: 40vh;
+    object-fit: cover;
+}
+
+.blog-details{
+    text-align: start;
+}
+
+.blog-tag{
+    padding: 6px 15px;
+background: #ffffff;
+background: -webkit-linear-gradient(118deg, #ffffff 0%, #9e9e9e 100%);
+background: linear-gradient(118deg, #ffffff 0%, #9e9e9e 100%);
+     border-radius: 5rem;
+     width: fit-content;
+     color: #000;
+     font-size: 13px;
+     margin-bottom: 0.8rem;
+     font-family: 'Clash Display', sans-serif;
+}
+
+.blog-date{
+     margin-bottom: 0.8rem;
+}
+
+.description-blog{
+    font-size: 18px;
+}
+
+/* =====================blog detail=================================== */
+
+.blog-deatil-hero{
+    /* margin-top: -17vh; */
+    width: 100%;
+}
+
+.blog-con-de{
+    padding-left: 3%;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.blog-con-de h1{
+    font-family: 'Clash Display', sans-serif;
+      background: linear-gradient(to bottom, #FCFCFD, #969697);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blog-writeup{
+   text-align: start;
+   font-size: 17px;
+   line-height: 1.3rem;
+   color: #e3e2e2;
+}
+
+.blog-iconn{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.blogdetails-img{
+    width: 65vw;
+    height: auto;
+    max-height: 60vh;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+
+.de-blog-tag{
+    margin-bottom: 0;
+    margin: 1rem 0;
+    margin-bottom: 0;
+}
+
+
+
+@media (max-width: 1100px){
+    .blog-top{
+        padding-top: 8%;
+    }
+}
+
+@media (max-width: 670px){
+    .blog-header{
+        font-size: 27px;
+        line-height: 2rem;
+        margin-bottom: 2rem;
+    }
+    .blogcards{
+        width: 100%;
+        gap: 7%;
+        justify-content: center;
+        padding: 0;
+    }
+    .blogcard{
+        width: 90vw;
+        margin-bottom: 1.7rem;
+    }
+
+    .blog-top{
+        padding-top: 20%;
+    }
+
+    .blogdetails-img{
+    width: 90vw;
+    height: auto;
+    max-height: 60vh;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+}
+
+/* .blogcard{
+    width: 18vw;
+}
+
+.blog-card img{
+    width: 90%;
+    height: 40vh;
+} */
