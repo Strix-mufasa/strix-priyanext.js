@@ -101,7 +101,7 @@ const Branding = () => {
     <div>
       <Nav />
       <SlideInFramerOnLoad />
-      <ScrollAnimation />
+      {/* <ScrollAnimation /> */}
       <RotateCardsScroll />
       <ScrollSlideAnimations />
       <Stagger />

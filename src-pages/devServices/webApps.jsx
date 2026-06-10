@@ -160,7 +160,7 @@ const WebApp = () => {
       />
       <Nav />
       <SlideInFramerOnLoad />
-      <ScrollAnimation />
+      {/* <ScrollAnimation /> */}
       <RotateCardsScroll />
       <ScrollSlideAnimations />
       <Stagger />

@@ -100,7 +100,7 @@ const Ecommerce = () => {
     <div>
       <Nav />
       <SlideInFramerOnLoad />
-      <ScrollAnimation />
+      {/* <ScrollAnimation /> */}
       <RotateCardsScroll />
       <ScrollSlideAnimations />
       <Stagger />

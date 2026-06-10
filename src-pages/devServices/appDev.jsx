@@ -102,7 +102,7 @@ const AppDev = () => {
     <div>
       <Nav />
       <SlideInFramerOnLoad />
-      <ScrollAnimation />
+      {/* <ScrollAnimation /> */}
       <RotateCardsScroll />
       <ScrollSlideAnimations />
       <Stagger />

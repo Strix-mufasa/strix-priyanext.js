@@ -238,7 +238,7 @@ const Mvp = () => {
       />
       <Nav />
       {/* <SlideInFramerOnLoad />
-      <ScrollAnimation />
+      {/* <ScrollAnimation /> */}
       <RotateCardsScroll />
       <ScrollSlideAnimations />
       <Stagger /> */}

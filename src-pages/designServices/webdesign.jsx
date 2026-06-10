@@ -107,7 +107,7 @@ const WebDesign = () => {
             />
             <Nav />
             <SlideInFramerOnLoad />
-            <ScrollAnimation />
+            {/* <ScrollAnimation /> */}
             <RotateCardsScroll />
             <ScrollSlideAnimations />
             <Stagger />

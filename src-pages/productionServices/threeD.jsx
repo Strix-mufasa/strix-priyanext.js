@@ -101,7 +101,7 @@ const ThreeD = () => {
     <div>
       <Nav />
       <SlideInFramerOnLoad />
-      <ScrollAnimation />
+      {/* <ScrollAnimation /> */}
       <RotateCardsScroll />
       <ScrollSlideAnimations />
       <Stagger />
