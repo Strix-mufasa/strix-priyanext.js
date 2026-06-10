@@ -37,7 +37,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const AppDev = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const navigate = useRouter()
+  const router = useRouter()
   const videoexRef = useRef(null)
 
   const handlePlay = () => {
@@ -148,7 +148,7 @@ const AppDev = () => {
                 <div className="play-button-overlay">
                   <h1 
                     className="sr-watch viewwork2" 
-                    onClick={() => navigate('/Project?filter=Application')}
+                    onClick={() => router.push('/Project?filter=Application')}
                     style={{ cursor: 'pointer' }}
                   >View work</h1>
 
