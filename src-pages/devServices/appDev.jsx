@@ -12,6 +12,7 @@ const Blur2 = "/assets/img/p-blur1.png"
 const Blur3 = "/assets/img/Ellipse 7.png"
 const Blur4 = "/assets/img/Ellipse 8.png"
 import '@/app/style/uiux.css'
+import Link from "next/link";
 
 const CardImg = "/assets/img/ui-card.webp"
 const Cardcon1 = "/assets/img/appdev1.png"
