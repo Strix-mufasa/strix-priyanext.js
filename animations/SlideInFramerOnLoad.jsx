@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { animate } from "framer-motion";
 
-export default function SlideInFramerLoad() {
+export default function SlideInFrameronLoad() {
   useEffect(() => {
     const elements = document.querySelectorAll(".slideinLoad");
 
