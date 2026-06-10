@@ -94,9 +94,9 @@ const Project = () => {
   const [activeSubFilter, setActiveSubFilter] = useState('');
   const [openModal, setOpenModal] = useState(null);
   const [loading, setLoading] = useState(true);
-  const searchParams = useSearchParams()
+  /*const searchParams = useSearchParams()*/
 
-  useEffect(() => {
+ /* useEffect(() => {
     if (projects.length === 0) return
     const filter = searchParams.get('filter')
     if (!filter) return
@@ -107,7 +107,7 @@ const Project = () => {
         break
       }
     }
-  }, [searchParams, projects])
+  }, [searchParams, projects])*/
 
   useEffect(() => {
     loadProjects();
