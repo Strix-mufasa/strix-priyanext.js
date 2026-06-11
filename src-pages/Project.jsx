@@ -94,15 +94,7 @@ const Project = () => {
   const [activeSubFilter, setActiveSubFilter] = useState('');
   const [openModal, setOpenModal] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [mounted, setMounted] = useState(false);    /*new*/
   const searchParams = useSearchParams()
-  
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
   
   useEffect(() => {
     if (projects.length === 0) return
