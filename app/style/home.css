@@ -344,8 +344,7 @@ width: 50% !important;
   display: inline-block;
   padding: 12px 28px;
   background: #000000;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 50px;
+  border: #969697;
   color: #ffffff;
   font-size: 14px;
   text-decoration: none;
@@ -370,7 +369,11 @@ width: 50% !important;
 
 /* Full black card background */
 .mvp-success-card {
-  background: #000000 !important;
+  background: linear-gradient(
+    130deg,
+    rgba(153, 153, 153, 1) 0%,    /* ✅ grey top */
+    rgba(0, 0, 0, 0) 100%          /* ✅ transparent bottom */
+  );
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 40px;
@@ -430,13 +433,13 @@ width: 50% !important;
 .mvp-success-img {
   width: 100%;
   height: 180px;
-  border-radius: 12px;
+  border: #969697;
   object-fit: cover;
 }
 
 .mvp-tag {
   color: rgba(255, 255, 255, 0.5);
-  font-size: 12px;
+  font-size: 16px;
   letter-spacing: 0.5px;
 }
 
