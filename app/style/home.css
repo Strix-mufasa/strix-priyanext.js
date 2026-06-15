@@ -293,11 +293,9 @@ width: 50% !important;
   display: flex;
   gap: 40px;
   background: linear-gradient(
-    135deg,
-    #040404 0%,
-    #1a1a1a 30%,
-    #3a3a3a 70%
-    #1f1f1ff9 100%
+    130deg,
+    rgba(153, 153, 153, 1) 0%,    /* ✅ grey top */
+    rgba(0, 0, 0, 0) 100%          /* ✅ transparent bottom */
   );
   border-radius: 20px;
   padding: 30px;
@@ -316,7 +314,7 @@ width: 50% !important;
   border-radius: 20px;
   padding: 1px;
   background: linear-gradient(
-    180deg,
+    130deg,
     rgba(153, 153, 153, 1) 0%,    /* ✅ grey top */
     rgba(0, 0, 0, 0) 100%          /* ✅ transparent bottom */
   );
