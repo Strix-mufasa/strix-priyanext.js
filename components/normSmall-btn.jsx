@@ -10,6 +10,7 @@ const BtnNormsall = ({ text = "Log In", onClick, to }) => {
       tabIndex={0}
       role="button"
       className="btn-norm"
+      suppressHydrationWarning={true}
       onClick={onClick}
     >
       <div className="space-btn"><p className='btn-p'>{text}</p></div>

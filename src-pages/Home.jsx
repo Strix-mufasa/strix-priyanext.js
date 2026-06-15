@@ -914,7 +914,8 @@ const Home = () => {
           </div>
 
           <SmoothTextReveal as="p" className="services-p p-up" delay={0.2}>
-            Strix combines design, development, and production in one team.Founded by Raj - a builder who believes the best products ships, not just render.
+            Strix combines design, development, and production in one team.
+            Founded by Raj - a builder who believes the best products ships, not just render.
           </SmoothTextReveal>
 
           <BtnNormsall text="About us" />
