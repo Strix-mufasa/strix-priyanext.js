@@ -292,7 +292,13 @@ width: 50% !important;
 .mvp-success-card {
   display: flex;
   gap: 40px;
-  background: #000000;
+  background: linear-gradient(
+    135deg,
+    #040404 0%,
+    #1a1a1a 30%,
+    #3a3a3a 70%
+    #1f1f1ff9 100%
+  );
   border-radius: 20px;
   padding: 30px;
   width: 100%;
@@ -391,8 +397,8 @@ width: 50% !important;
 }
 
 .mvp-success-stats p {
-  font-size: 12px;
-  color: rgba(255,255,255,0.5);
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.574);
 }
 
 .mvp-success-btns {
