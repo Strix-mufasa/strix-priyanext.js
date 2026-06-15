@@ -344,7 +344,8 @@ width: 50% !important;
   display: inline-block;
   width: 370px;
   background: #000000;
-  border: #969697;
+  border:1 px solid #969697;
+  border-radius: 0 0 20px 20px;
   color: #ffffff;
   font-size: 18px;
   text-decoration: none;
@@ -434,7 +435,8 @@ width: 50% !important;
 .mvp-success-img {
   width: 370px;
   height: 350px;
-  border: #969697;
+  border:1 px solid #969697;
+  border-radius: 20px 20px 0 0;
   object-fit: cover;
 }
 
