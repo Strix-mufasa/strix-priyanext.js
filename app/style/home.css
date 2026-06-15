@@ -343,8 +343,9 @@ width: 50% !important;
 .mvp-case-btn {
   display: inline-block;
   width: 370px;
+  padding: 12px 15px;
   background: #000000;
-  border: 2px solid #a8a8ab;
+  border: 1px solid #a8a8ab;
   border-radius: 0 0 20px 20px;
   color: #ffffff;
   font-size: 18px;
@@ -437,7 +438,7 @@ width: 50% !important;
   width: 370px;
   height: 350px;
   margin-bottom: 0;
-  border: 2px solid #a8a8ab;
+  border: 1px solid #a8a8ab;
   border-radius: 20px 20px 0 0;
   object-fit: cover;
 }
@@ -445,6 +446,7 @@ width: 50% !important;
 .mvp-tag {
   color: rgba(255, 255, 255, 0.5);
   font-size: 16px;
+  padding: 15px 18px;
   letter-spacing: 0.5px;
   width: 370px;
   align-items: center;
@@ -473,11 +475,40 @@ width: 50% !important;
 
 @media (max-width: 768px) {
   .mvp-success-card {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 95%;
+    margin: 0 auto;
+
     padding: 24px;
+    gap: 24px;
+
+    height: auto;
+  }
+
+  .mvp-success-left,
+  .mvp-success-right {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .mvp-success-img,
+  .mvp-case-btn {
+    width: 100%;
+    max-width: 370px;
+  }
+
+  .mvp-success-stats {
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
   }
 }
-
 /* ===================== Service Search ===================== */
 
 .service-search-wrapper {
