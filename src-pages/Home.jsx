@@ -661,7 +661,7 @@ const Home = () => {
         {/* =============section 5============== */}
         <div className="smoothsection services circcon sectionCon">
           <SmoothTextReveal as="h2" className="section-header delay3 ">
-            We Build Experiences that Breathe
+            The Architects of Digital Excellence
           </SmoothTextReveal>
 
           <CircleBlurAnimation className="circleblur circleblurtop" src={CircleBlur} />
@@ -914,8 +914,7 @@ const Home = () => {
           </div>
 
           <SmoothTextReveal as="p" className="services-p p-up" delay={0.2}>
-            Not just another agency — Strix combines design, development,
-            production, and MVP expertise to help brands and startups scale faster.
+            Strix combines design, development, and production in one team.Founded by Raj - a builder who believes the best products ships, not just render.
           </SmoothTextReveal>
 
           <BtnNormsall text="About us" />
