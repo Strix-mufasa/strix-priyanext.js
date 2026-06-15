@@ -831,10 +831,10 @@ const Home = () => {
           <h3>4.0 ⭐ Ratings</h3>
         </div>
       </div>
-      <div className="mvp-success-btns">
+      {/* <div className="mvp-success-btns">
         <button className="mvp-play-btn">🎮 Google Play Store</button>
         <button className="mvp-review-btn">100+ User Reviews</button>
-      </div>
+      </div> */}
     </div>
     <div className="mvp-success-right">
       <img src="/assets/img/kundaliHome.jpg" alt="Kundli App" className="mvp-success-img" />
