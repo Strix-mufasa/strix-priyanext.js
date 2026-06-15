@@ -86,48 +86,70 @@ const Carousel = () => {
   const infiniteItems = [...carouselData, ...carouselData, ...carouselData];
   const totalItems = infiniteItems.length;
 
+  // const getItemStyle = (index) => {
+  //   const position = index - currentIndex;
+  //   const isCenter = position === 0;
+  //   const absPosition = Math.abs(position);
+
+  //   let transform = '';
+  //   let opacity = 1;
+  //   let zIndex = 10;
+  //   let scale = 1;
+  //   let visibility = "visible";
+
+  //   if (isCenter) {
+  //     transform = 'translateX(0%) translateZ(0px)';
+  //     scale = 1.2;
+  //     zIndex = 20;
+  //     opacity = 1;
+  //   } else if (absPosition === 1) {
+  //     const translateX = position > 0 ? '120%' : '-120%';
+  //     transform = `translateX(${translateX}) translateZ(-80px)`;
+  //   } else if (absPosition === 2) {
+  //     const translateX = position > 0 ? '240%' : '-240%';
+  //     transform = `translateX(${translateX}) translateZ(-140px)`;
+  //   } else {
+  //     // ✅ Far left / right images → hide them
+  //     const translateX = position > 0 ? '320%' : '-320%';
+  //     transform = `translateX(${translateX}) translateZ(-200px)`;
+  //     opacity = 0;           // fully transparent
+  //     visibility = "hidden"; // remove from layout/interaction
+  //   }
+
+  //   return {
+  //     transform: `${transform} scale(${scale})`,
+  //     opacity,
+  //     visibility,
+  //     zIndex,
+  //     transition: isAnimating
+  //       ? 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
+  //       : 'none',
+  //   };
+  // };
+
   const getItemStyle = (index) => {
-    const position = index - currentIndex;
-    const isCenter = position === 0;
-    const absPosition = Math.abs(position);
+  const position = index - currentIndex;
+  const isCenter = position === 0;
 
-    let transform = '';
-    let opacity = 1;
-    let zIndex = 10;
-    let scale = 1;
-    let visibility = "visible";
-
-    if (isCenter) {
-      transform = 'translateX(0%) translateZ(0px)';
-      scale = 1.2;
-      zIndex = 20;
-      opacity = 1;
-    } else if (absPosition === 1) {
-      const translateX = position > 0 ? '120%' : '-120%';
-      transform = `translateX(${translateX}) translateZ(-80px)`;
-    } else if (absPosition === 2) {
-      const translateX = position > 0 ? '240%' : '-240%';
-      transform = `translateX(${translateX}) translateZ(-140px)`;
-    } else {
-      // ✅ Far left / right images → hide them
-      const translateX = position > 0 ? '320%' : '-320%';
-      transform = `translateX(${translateX}) translateZ(-200px)`;
-      opacity = 0;           // fully transparent
-      visibility = "hidden"; // remove from layout/interaction
-    }
-
+  if (isCenter) {
     return {
-      transform: `${transform} scale(${scale})`,
-      opacity,
-      visibility,
-      zIndex,
-      transition: isAnimating
-        ? 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
-        : 'none',
+      transform: 'translateX(0%) scale(1)',
+      opacity: 1,
+      visibility: 'visible',
+      zIndex: 20,
+      transition: isAnimating ? 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
     };
+  }
+
+  
+  return {
+    transform: position > 0 ? 'translateX(120%) scale(0.85)' : 'translateX(-120%) scale(0.85)',
+    opacity: 0,
+    visibility: 'hidden',
+    zIndex: 0,
+    transition: isAnimating ? 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
   };
-
-
+};
   const nextSlide = () => {
     if (isAnimating) return;
     setIsAnimating(true);
