@@ -404,12 +404,12 @@ width: 50% !important;
   padding: 8px 16px;
   border-radius: 8px;
   border: 1px solid rgba(255,255,255,0.2);
+  color: #000000;
   background: linear-gradient(
     180deg,
     #ffffff 0%,
     #f3f3f36b 45%,
     #d9d9d9ad 100%);
-  color: #ffffff00;
   box-shadow: inset 0 1px 1px rgba(255,255,255,0.8), 0 4px 12px rgba(0,0,0,0.25);
   font-size: 12px;
   cursor: pointer;
