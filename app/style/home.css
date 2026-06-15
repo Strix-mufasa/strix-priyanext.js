@@ -294,7 +294,7 @@ width: 50% !important;
   gap: 40px;
   background: linear-gradient(
     130deg,
-    rgba(153, 153, 153, 0.44) 0%,    /* ✅ grey top */
+    rgb(35, 35, 35) 0%,    /* ✅ grey top */
     rgb(0, 0, 0) 100%          /* ✅ transparent bottom */
   );
   border-radius: 20px;
@@ -315,7 +315,7 @@ width: 50% !important;
   padding: 1px;
   background: linear-gradient(
     130deg,
-    rgba(153, 153, 153, 0.44) 0%,     /* ✅ grey top */
+    rgb(35, 35, 35) 0%,     /* ✅ grey top */
     rgb(0, 0, 0) 100%          /* ✅ transparent bottom */
   );
   -webkit-mask: 
@@ -342,12 +342,11 @@ width: 50% !important;
 /* View Case Study Button */
 .mvp-case-btn {
   display: inline-block;
-  padding: 12px 28px;
   width: 370px;
   background: #000000;
   border: #969697;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 18px;
   text-decoration: none;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
@@ -372,7 +371,7 @@ width: 50% !important;
 .mvp-success-card {
   background: linear-gradient(
     130deg,
-    rgb(57, 53, 53) 0%,        /* ✅ grey top */
+    rgb(35, 35, 35) 0%,        /* ✅ grey top */
     rgb(0, 0, 0) 100%          /* ✅ transparent bottom */
   );
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -444,6 +443,7 @@ width: 50% !important;
   font-size: 16px;
   letter-spacing: 0.5px;
   width: 370px;
+  align-items: center;
 }
 
 .ryvon-logo {
