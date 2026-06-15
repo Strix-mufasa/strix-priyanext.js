@@ -825,12 +825,10 @@ const Home = () => {
       </p>
       <div className="mvp-success-stats">
         <div>
-          <h3>50k+</h3>
-          <p>Downloads</p>
+          <h3>50k + Downloads</h3>
         </div>
         <div>
-          <h3>4.0 ⭐</h3>
-          <p>Ratings</p>
+          <h3>4.0 ⭐ Ratings</h3>
         </div>
       </div>
       <div className="mvp-success-btns">
