@@ -299,6 +299,7 @@ const ServiceSearch = ({ variants, isMotion = true }) => {
                     ref={inputRef}
                     type="text"
                     placeholder="Search for design, dev, or video services..."
+                    suppressHydrationWarning={true}
                     value={query}
                     onChange={handleChange}
                     onKeyDown={handleKeyDown}
