@@ -17,6 +17,7 @@ const FILTERS = {
   Production: ['3D', 'Promos', 'Long Format', 'Reels/shorts', 'Motion Graphics']
 };
 
+const INDUSTRIES = ['SaaS', 'FinTech', 'Gaming', 'AI', 'Enterprise', 'Startups'];
 const getDataSize = (data) => {
   return new Blob([JSON.stringify(data)]).size;
 };
@@ -406,6 +407,7 @@ const ProjectForm = ({ editingItem, setEditingItem, setShowForm, loadData }) => 
     externalLink: '',
     image: '',
     filters: { Design: [], Development: [], Production: [] },
+    industry: [],
     status: 'draft'
   });
 
@@ -420,6 +422,7 @@ const ProjectForm = ({ editingItem, setEditingItem, setShowForm, loadData }) => 
         externalLink: '',
         image: '',
         filters: { Design: [], Development: [], Production: [] },
+        industry: [],
         status: 'draft'
       });
     }
@@ -568,6 +571,37 @@ const ProjectForm = ({ editingItem, setEditingItem, setShowForm, loadData }) => 
             </div>
           ))}
         </div>
+        
+        <div className="filters-section">
+          <h3 className="section-title">Industry (Select Multiple)</h3>
+          <div className="filter-options">
+            {INDUSTRIES.map(industry => (
+              <button
+                key={industry}
+                type="button"
+                onClick={() => {
+                  setFormData(prev => {
+                    const list = prev.industry || [];
+                    return {
+                      ...prev,
+                      industry: list.includes(industry)
+                        ? list.filter(i => i !== industry)
+                        : [...list, industry]
+                    };
+                  });
+                }}
+                className={`filter-option ${(formData.industry || []).includes(industry) ? 'filter-option-active' : ''}`}
+              >
+                {industry}
+              </button>
+            ))}
+          </div>
+        </div>
+
+
+
+
+
 
         <div className="form-group">
           <label className="form-label">Status</label>

@@ -56,6 +56,7 @@ const FILTERS = {
   Production: ['3D', 'Promos', 'Long Format', 'Reels/shorts', 'Motion Graphics']
 };
 
+const INDUSTRIES = ['SaaS', 'FinTech', 'Gaming', 'AI', 'Enterprise', 'Startups'];
 // Filter Modal Component
 const FilterModal = ({ category, activeSubFilter, onClose, onFilterSelect, onCategorySelect }) => {
   useEffect(() => {
@@ -95,6 +96,8 @@ const Project = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [activeSubFilter, setActiveSubFilter] = useState('');
   const [openModal, setOpenModal] = useState(null);
+  const [industryModal, setIndustryModal] = useState(false); 
+  const [activeIndustry, setActiveIndustry] = useState('');  
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams()
   
@@ -182,6 +185,19 @@ const Project = () => {
     setFilteredProjects(filtered);
   };
 
+  const handleIndustryClick = (industry) => {
+    setActiveIndustry(industry);
+    setActiveFilter('All');
+    setActiveSubFilter('');
+    setIndustryModal(false);
+
+    const filtered = projects.filter(project => {
+      const industries = project.industry || [];
+      return industries.includes(industry);
+    });
+    setFilteredProjects(filtered);
+  };
+
   const closeModal = () => {
     setOpenModal(null);
   };
@@ -240,9 +256,46 @@ const Project = () => {
 
       
 
-      <div className='project-p-btn'>
-        <p onClick={() => handleFilterClick('All')}
-          className={activeFilter === 'All' ? 'active link-button-all' : ''}  >All projects</p>
+      {/* Industries Dropdown */}
+      <div className="project-industry-con">
+        <div 
+          className={`industry-trigger ${industryModal ? 'open' : ''}`}
+          onClick={() => {
+            setIndustryModal(!industryModal);
+            // All reset karo
+            setActiveFilter('All');
+            setActiveSubFilter('');
+            setFilteredProjects(projects);
+            setActiveIndustry('');
+          }}
+        >
+          <span>Industries</span>
+          <span className={`industry-arrow ${industryModal ? 'rotate' : ''}`}>∨</span>
+        </div>
+
+        {industryModal && (
+          <div className="industry-dropdown">
+            {INDUSTRIES.map(industry => (
+              <button
+                key={industry}
+                className={`industry-item ${activeIndustry === industry ? 'active' : ''}`}
+                onClick={() => handleIndustryClick(industry)}
+              >
+                {industry}
+              </button>
+            ))}
+            <button
+              className="industry-item industry-all"
+              onClick={() => {
+                setActiveIndustry('');
+                setFilteredProjects(projects);
+                setIndustryModal(false);
+              }}
+            >
+              All Industries
+            </button>
+          </div>
+        )}
       </div>
 
       {/* =============================section 2========= */}
