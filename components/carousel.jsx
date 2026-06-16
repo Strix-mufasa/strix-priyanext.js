@@ -426,7 +426,22 @@ const Carousel = () => {
             </div>
           ))}
         </div>
-
+        <div className="carousel-card-info">
+          <p className="carousel-card-category">
+            {carouselData[currentIndex % carouselData.length]?.categoryText}
+          </p>
+          <h3 className="carousel-card-title">
+            {carouselData[currentIndex % carouselData.length]?.title}
+          </h3>
+          <div className="carousel-dots">
+            {carouselData.map((_, i) => (
+              <span
+                key={i}
+                className={`carousel-dot ${(currentIndex % carouselData.length) === i ? 'active' : ''}`}
+              />
+            ))}
+          </div>
+        </div>
         {/* ✅ Responsive Buttons */}
         <button
           onClick={prevSlide}
