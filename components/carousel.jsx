@@ -238,7 +238,7 @@ const Carousel = () => {
     container: {
       width: '100%',
       height: 'auto',
-      overflow: 'hidden',
+      overflow: 'visible',
       position: 'relative',
       marginTop: '2rem',
       cursor: 'grab',
@@ -263,6 +263,7 @@ const Carousel = () => {
       height: '100%',
       position: 'relative',
       cursor: 'grab',
+      overflow: 'visible',
     },
     carouselContainer: {
       position: 'relative',
