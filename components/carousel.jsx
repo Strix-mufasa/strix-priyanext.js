@@ -24,7 +24,7 @@ const Carousel = () => {
   const [carouselData, setCarouselData] = useState([]);
   const [loading, setLoading] = useState(true);
   const containerRef = useRef(null);
-  const navigate = useRouter();
+  const router  = useRouter();
 
   // ✅ Fetch projects from Firebase with Resilience
   useEffect(() => {
@@ -394,9 +394,9 @@ const Carousel = () => {
                 if (externalLink && externalLink.startsWith('http')) {
                   window.open(externalLink, '_blank');
                 } else if (item.link) {
-                  navigate(item.link);
+                  router.push(item.link);
                 } else {
-                  navigate(`/case-study/${item.id}`);
+                  router.push(`/case-study/${item.id}`);
                 }
                 } else {
                   // Non-center card → slide it into focus
