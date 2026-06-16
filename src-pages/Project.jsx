@@ -24,6 +24,8 @@ const Blur5 = "/assets/img/p-blur3.png"
 const Blur6 = "/assets/img/p-blur4.png"
 const Blur7 = "/assets/img/blur5.png"
 const Blur8 = "/assets/img/p-blur6.png"
+const Upwork = "/assets/img/upwork.png"
+const Clutch = "/assets/img/clutch.png"
 
 import RotateCardsScroll from '../animations/RotateCardsScroll'
 import SlideInFramerAuto from '../animations/SlideInFramer'
@@ -212,6 +214,32 @@ const Project = () => {
         <img src={Blur2} className='p-blur2' alt="Blur" />
       </div>
 
+
+      
+
+      {/* ===== Stats + Logos ===== */}
+      <div className="project-stats-section">
+        <div className="project-stats-row">
+          <div className="stat-item">
+            <img src={Upwork} alt="Upwork" className="stat-platform-logo" />
+            <div className="stat-stars">⭐⭐⭐⭐⭐</div>
+          </div>
+          <div className="stat-divider" />
+          <div className="stat-item">
+            <h3 className="stat-number">200+</h3>
+            <p className="stat-label">Projects Delivered</p>
+          </div>
+          <div className="stat-divider" />
+          <div className="stat-item">
+            <img src={Clutch} alt="Clutch" className="stat-platform-logo" />
+            <div className="stat-stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <Loop />
+      </div>
+
+      
+
       <div className='project-p-btn'>
         <p onClick={() => handleFilterClick('All')}
           className={activeFilter === 'All' ? 'active link-button-all' : ''}  >All projects</p>
@@ -288,9 +316,7 @@ const Project = () => {
         <BtnNormsall text="Know More" />
       </div>
 
-      <div className="project-logo-loop smoothsection">
-        <Loop />
-      </div>
+      
 
       {/* ===============================Book Call================= */}
       <div className="smoothsection book-container">
