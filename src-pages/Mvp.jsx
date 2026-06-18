@@ -242,11 +242,11 @@ const Mvp = () => {
       <RotateCardsScroll />
       <ScrollSlideAnimations />
       <Stagger /> */}
-      <DotGrid
+      {/* <DotGrid
         dotSize={2}
         gap={24}
         activeColor="#ffffff"
-      />
+      /> */}
 
 
       {/* =============== service-hero ============ */}

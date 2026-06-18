@@ -479,11 +479,11 @@ const Home = () => {
 
 
       <div className="app" id="smooth-wrapper" ref={section} style={{ position: "relative" }}>
-        <DotGrid
+        {/* <DotGrid
           dotSize={2}
           gap={24}
           activeColor="#ffffff"
-        />
+        /> */}
 
 
         {/* =============hero section============== */}
