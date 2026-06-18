@@ -124,47 +124,70 @@ const Mvp = () => {
   //   return () => ctx.revert()
   // }, [])
 
-  const extendRef = useRef(null);
-  const timelineRef = useRef(null);
+  // const extendRef = useRef(null);
+  // const timelineRef = useRef(null);
 
-  useEffect(() => {
-    if (!extendRef.current || !timelineRef.current) return;
+  // useEffect(() => {
+  //   if (!extendRef.current || !timelineRef.current) return;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: timelineRef.current,
-        start: "top 60%",
-        end: "bottom 90%",
-        scrub: 1.5,
-      }
-    });
+  //   const tl = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: timelineRef.current,
+  //       start: "top 60%",
+  //       end: "bottom 90%",
+  //       scrub: 1.5,
+  //     }
+  //   });
 
-    tl.to(extendRef.current, {
-      height: "25%",
-      duration: 0.25,
-      ease: "power2.inOut"
-    })
-      .to(extendRef.current, {
-        height: "50%",
-        duration: 0.25,
-        ease: "power2.inOut"
-      })
-      .to(extendRef.current, {
-        height: "75%",
-        duration: 0.25,
-        ease: "power2.inOut"
-      })
-      .to(extendRef.current, {
-        height: "100%",
-        duration: 0.25,
-        ease: "power2.inOut"
-      });
+  //   tl.to(extendRef.current, {
+  //     height: "25%",
+  //     duration: 0.25,
+  //     ease: "power2.inOut"
+  //   })
+  //     .to(extendRef.current, {
+  //       height: "50%",
+  //       duration: 0.25,
+  //       ease: "power2.inOut"
+  //     })
+  //     .to(extendRef.current, {
+  //       height: "75%",
+  //       duration: 0.25,
+  //       ease: "power2.inOut"
+  //     })
+  //     .to(extendRef.current, {
+  //       height: "100%",
+  //       duration: 0.25,
+  //       ease: "power2.inOut"
+  //     });
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
+  //   return () => {
+  //     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  //   };
+  // }, []);
+      const extendRef = useRef(null);
+      const timelineRef = useRef(null);
 
+      useEffect(() => {
+        if (!extendRef.current || !timelineRef.current) return;
+
+        const tween = gsap.to(extendRef.current, {
+          height: "100%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: timelineRef.current,
+            start: "top 60%",
+            end: "bottom 90%",
+            scrub: 1,
+          }
+        });
+
+        return () => {
+          if (tween.scrollTrigger) tween.scrollTrigger.kill();
+          tween.kill();
+        };
+      }, []);
+
+      
   const faqData = [
     {
       question: "How do SaaS MVP development agencies help early-stage SaaS businesses?",
