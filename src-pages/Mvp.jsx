@@ -304,7 +304,64 @@ const Mvp = () => {
         <img src={Blur1} className='p-blur1' alt="Gradient blur 1" />
         <img src={Blur2} className='p-blur2' alt="Gradient blur 2" />
       </div>
+    
 
+      {/* =============Our Successful MVPs============== */}
+<div className="smoothsection sectionCon mvp-success">
+  <h2 className="scrollReveal section-header">Our Successful MVPs</h2>
+
+  {/* Card 1 - Kundli Pro */}
+  <div className="mvp-success-card scrollReveal">
+    <div className="mvp-success-left">
+      <img src="/assets/img/Astra.png" alt="Kundli Pro" className="mvp-success-logo" />
+      <p className="mvp-success-desc">
+        The Kundli Pro is a Vedic astrology software used to create detailed
+        birth charts, predict future events, and analyze horoscopes.
+      </p>
+      <div className="mvp-success-stats">
+        <div>
+          <h3>50k + Downloads</h3>
+        </div>
+        <div>
+          <h3>4.0 ⭐ Ratings</h3>
+        </div>
+      </div>
+    </div>
+    <div className="mvp-success-right">
+      <img src="/assets/img/kundaliHome.jpg" alt="Kundli App" className="mvp-success-img" />
+      <Link href="/cs" className="mvp-case-btn">View Case Study →</Link>
+      <p className="mvp-tag">• Mobile MVP</p>
+    </div>
+  </div>
+
+  {/* Card 2 - Ryvon AI */}
+  <div className="mvp-success-card scrollReveal">
+    <div className="mvp-success-left">
+      <img src="/assets/img/RyvonLogo.png" alt="Ryvon AI" className="mvp-success-logo" />
+      <p className="mvp-success-desc">
+        <strong>Ryvon</strong> is one platform for document chat, audio
+        transcription, and workflow automation.
+      </p>
+      <div className="mvp-success-stats">
+        <div>
+          <h3>&lt;3 Weeks</h3>
+          <p>From Idea to launch ready</p>
+        </div>
+        <div>
+          <h3>$1M+</h3>
+          <p>Pre-seed Valuation</p>
+        </div>
+      </div>
+    </div>
+    <div className="mvp-success-right">
+      <img src="/assets/img/RyvonHome.png" alt="Ryvon AI" className="mvp-success-img" />
+      <Link href="/cs" className="mvp-case-btn">View Case Study →</Link>
+      <p className="mvp-tag">• AI SaaS Platform</p>
+    </div>
+  </div>
+
+  <Link href="/cs" className="mvp-explore-btn">Explore Cases</Link>
+</div>
       {/* =================provide=========== */}
       <div className="provide-con mpvcard-section ">
         <div className="sh-top uiux-hero mvp-conn">
