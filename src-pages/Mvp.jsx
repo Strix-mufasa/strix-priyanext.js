@@ -304,7 +304,37 @@ const Mvp = () => {
         <img src={Blur1} className='p-blur1' alt="Gradient blur 1" />
         <img src={Blur2} className='p-blur2' alt="Gradient blur 2" />
       </div>
-    
+{/* =============Stats Section============== */}
+<div className="mvp-stats-section">
+  <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+    <BtnNormsall text="Start your MVP" />
+  </div>
+
+  <div className="mvp-stats-divider">
+    <span className="mvp-stats-line"></span>
+    <p className="mvp-stats-label">Our Stats</p>
+    <span className="mvp-stats-line"></span>
+  </div>
+
+  <div className="mvp-stats-grid">
+    <div className="mvp-stat-box">
+      <h3>&lt;4 Week</h3>
+      <p>to build your MVP</p>
+    </div>
+    <div className="mvp-stat-box">
+      <h3>10+</h3>
+      <p>MVPs launched successfully</p>
+    </div>
+    <div className="mvp-stat-box">
+      <h3>3x</h3>
+      <p>Faster Product Validation</p>
+    </div>
+    <div className="mvp-stat-box">
+      <h3>95%</h3>
+      <p>SaaS and Startup Focused</p>
+    </div>
+  </div>
+</div>    
 
       {/* =============Our Successful MVPs============== */}
 <div className="smoothsection sectionCon mvp-success">
