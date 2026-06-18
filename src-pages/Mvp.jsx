@@ -35,7 +35,7 @@ const Scala = "/assets/img/scala.png"
 const ScalaH = "/assets/img/scala-h.png"
 const Stra = "/assets/img/strategy.png"
 const StraH = "/assets/img/strategy-h.png"
-const Gemini = "/assets/img/gemini.webp"
+const Gemini = "/assets/img/Gemini.png"
 const TimeIcon = "/assets/img/time-icon.svg"
 const Arrow = "/assets/img/arrow-right.svg"
 import Link from 'next/link'
@@ -101,69 +101,92 @@ const Mvp = () => {
     }
   };
 
-  useEffect(() => {
-    if (window.innerWidth < 768) return
-    if (!videoexRef.current) return
-    const element = videoexRef.current
+  // useEffect(() => {
+  //   if (window.innerWidth < 768) return
+  //   if (!videoexRef.current) return
+  //   const element = videoexRef.current
 
-    const ctx = gsap.context(() => {
-      gsap.to(element, {
-        width: '85vw',
-        height: '90vh',
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: element,
-          start: 'top 80%',
-          end: 'top 20%',
-          scrub: 1,
-          toggleActions: 'play none none reverse',
-        },
-      })
-    })
+  //   const ctx = gsap.context(() => {
+  //     gsap.to(element, {
+  //       width: '85vw',
+  //       height: '90vh',
+  //       ease: 'power2.out',
+  //       scrollTrigger: {
+  //         trigger: element,
+  //         start: 'top 80%',
+  //         end: 'top 20%',
+  //         scrub: 1,
+  //         toggleActions: 'play none none reverse',
+  //       },
+  //     })
+  //   })
 
-    return () => ctx.revert()
-  }, [])
+  //   return () => ctx.revert()
+  // }, [])
 
-  const extendRef = useRef(null);
-  const timelineRef = useRef(null);
+  // const extendRef = useRef(null);
+  // const timelineRef = useRef(null);
 
-  useEffect(() => {
-    if (!extendRef.current || !timelineRef.current) return;
+  // useEffect(() => {
+  //   if (!extendRef.current || !timelineRef.current) return;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: timelineRef.current,
-        start: "top 60%",
-        end: "bottom 90%",
-        scrub: 1.5,
-      }
-    });
+  //   const tl = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: timelineRef.current,
+  //       start: "top 60%",
+  //       end: "bottom 90%",
+  //       scrub: 1.5,
+  //     }
+  //   });
 
-    tl.to(extendRef.current, {
-      height: "25%",
-      duration: 0.25,
-      ease: "power2.inOut"
-    })
-      .to(extendRef.current, {
-        height: "50%",
-        duration: 0.25,
-        ease: "power2.inOut"
-      })
-      .to(extendRef.current, {
-        height: "75%",
-        duration: 0.25,
-        ease: "power2.inOut"
-      })
-      .to(extendRef.current, {
-        height: "100%",
-        duration: 0.25,
-        ease: "power2.inOut"
-      });
+  //   tl.to(extendRef.current, {
+  //     height: "25%",
+  //     duration: 0.25,
+  //     ease: "power2.inOut"
+  //   })
+  //     .to(extendRef.current, {
+  //       height: "50%",
+  //       duration: 0.25,
+  //       ease: "power2.inOut"
+  //     })
+  //     .to(extendRef.current, {
+  //       height: "75%",
+  //       duration: 0.25,
+  //       ease: "power2.inOut"
+  //     })
+  //     .to(extendRef.current, {
+  //       height: "100%",
+  //       duration: 0.25,
+  //       ease: "power2.inOut"
+  //     });
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
+  //   return () => {
+  //     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  //   };
+  // }, []);
+      const extendRef = useRef(null);
+      const timelineRef = useRef(null);
+
+      useEffect(() => {
+        if (!extendRef.current || !timelineRef.current) return;
+
+        const tween = gsap.to(extendRef.current, {
+          height: "100%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: timelineRef.current,
+            start: "top 60%",
+            end: "bottom 90%",
+            scrub: 1,
+          }
+        });
+
+        return () => {
+          if (tween.scrollTrigger) tween.scrollTrigger.kill();
+          tween.kill();
+        };
+      }, []);
+
 
   const faqData = [
     {
@@ -242,18 +265,18 @@ const Mvp = () => {
       <RotateCardsScroll />
       <ScrollSlideAnimations />
       <Stagger /> */}
-      <DotGrid
+      {/* <DotGrid
         dotSize={2}
         gap={24}
         activeColor="#ffffff"
-      />
+      /> */}
 
 
       {/* =============== service-hero ============ */}
       <div className="service-hero">
         <div className="sh-top uiux-hero">
           <img src={Circleblur} alt="Design background blur" />
-          <h1 className="slideinLoad mvp-hero-h1">Get flawless <br />product from scratch</h1 >
+          <h1 className="slideinLoad mvp-hero-h1">Design, build, and launch <br />your MVP in 4 weeks</h1 >
         </div>
 
         <div className="case-box-con uiu-con mvp-video">
@@ -262,10 +285,12 @@ const Mvp = () => {
           <div
             ref={videoexRef}
             style={{
-              width: '78vw',
-              height: '90vh'
+              width: '100%',
+              maxWidth: '1004px',
+              aspectRatio: '501/251'
             }}
-            className="video-card-container">
+  
+            className="video-card-container mvp-video-card">
             {!isPlaying ? (
               <div className="video-thumbnail">
                 <img
@@ -304,7 +329,94 @@ const Mvp = () => {
         <img src={Blur1} className='p-blur1' alt="Gradient blur 1" />
         <img src={Blur2} className='p-blur2' alt="Gradient blur 2" />
       </div>
+{/* =============Stats Section============== */}
+<div className="mvp-stats-section">
+  <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+    <BtnNormsall text="Start your MVP" />
+  </div>
 
+  <div className="mvp-stats-divider">
+    <span className="mvp-stats-line"></span>
+    <p className="mvp-stats-label">Our Stats</p>
+    <span className="mvp-stats-line"></span>
+  </div>
+
+  <div className="mvp-stats-grid">
+    <div className="mvp-stat-box">
+      <h3>&lt;4 Week</h3>
+      <p>to build your MVP</p>
+    </div>
+    <div className="mvp-stat-box">
+      <h3>10+</h3>
+      <p>MVPs launched successfully</p>
+    </div>
+    <div className="mvp-stat-box">
+      <h3>3x</h3>
+      <p>Faster Product Validation</p>
+    </div>
+    <div className="mvp-stat-box">
+      <h3>95%</h3>
+      <p>SaaS and Startup Focused</p>
+    </div>
+  </div>
+</div>    
+
+      {/* =============Our Successful MVPs============== */}
+<div className="smoothsection sectionCon mvp-success">
+<h2 className="scrollReveal mvp-success-heading">Our Successful MVPs</h2>
+
+  {/* Card 1 - Kundli Pro */}
+  <div className="mvp-success-card scrollReveal">
+    <div className="mvp-success-left">
+      <img src="/assets/img/Astra.png" alt="Kundli Pro" className="mvp-success-logo" />
+      <p className="mvp-success-desc">
+        The Kundli Pro is a Vedic astrology software used to create detailed
+        birth charts, predict future events, and analyze horoscopes.
+      </p>
+      <div className="mvp-success-stats">
+        <div>
+          <h3>50k + Downloads</h3>
+        </div>
+        <div>
+          <h3>4.0 ⭐ Ratings</h3>
+        </div>
+      </div>
+    </div>
+    <div className="mvp-success-right">
+      <img src="/assets/img/kundaliHome.jpg" alt="Kundli App" className="mvp-success-img" />
+      <Link href="/cs" className="mvp-case-btn">View Case Study →</Link>
+      <p className="mvp-tag">• Mobile MVP</p>
+    </div>
+  </div>
+
+  {/* Card 2 - Ryvon AI */}
+  <div className="mvp-success-card scrollReveal">
+    <div className="mvp-success-left">
+      <img src="/assets/img/RyvonLogo.png" alt="Ryvon AI" className="mvp-success-logo" />
+      <p className="mvp-success-desc">
+        <strong>Ryvon</strong> is one platform for document chat, audio
+        transcription, and workflow automation.
+      </p>
+      <div className="mvp-success-stats">
+        <div>
+          <h3>&lt;3 Weeks</h3>
+          <p>From Idea to launch ready</p>
+        </div>
+        <div>
+          <h3>$1M+</h3>
+          <p>Pre-seed Valuation</p>
+        </div>
+      </div>
+    </div>
+    <div className="mvp-success-right">
+      <img src="/assets/img/RyvonHome.png" alt="Ryvon AI" className="mvp-success-img" />
+      <Link href="/cs" className="mvp-case-btn">View Case Study →</Link>
+      <p className="mvp-tag">• AI SaaS Platform</p>
+    </div>
+  </div>
+
+  <Link href="/cs" className="mvp-explore-btn">Explore Cases</Link>
+</div>
       {/* =================provide=========== */}
       <div className="provide-con mpvcard-section ">
         <div className="sh-top uiux-hero mvp-conn">
