@@ -35,7 +35,7 @@ const Scala = "/assets/img/scala.png"
 const ScalaH = "/assets/img/scala-h.png"
 const Stra = "/assets/img/strategy.png"
 const StraH = "/assets/img/strategy-h.png"
-const Gemini = "/assets/img/gemini.webp"
+const Gemini = "/assets/img/Gemini.png"
 const TimeIcon = "/assets/img/time-icon.svg"
 const Arrow = "/assets/img/arrow-right.svg"
 import Link from 'next/link'
