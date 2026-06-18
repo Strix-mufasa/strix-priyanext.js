@@ -205,7 +205,7 @@ const ProjectCarousel = ({ serviceFilter }) => {
       position: 'relative',
       width: '100%',
       height: '100%',
-      borderRadius: '2rem',
+      borderRadius: '2rem ',
       overflow: 'hidden',
       boxShadow: isCenter
         ? '0 0 20px 2px rgba(255, 255, 255, 0.4)' // ✅ outer glow for focused card
