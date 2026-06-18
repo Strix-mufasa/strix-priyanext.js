@@ -187,7 +187,7 @@ const Mvp = () => {
         };
       }, []);
 
-      
+
   const faqData = [
     {
       question: "How do SaaS MVP development agencies help early-stage SaaS businesses?",
@@ -276,7 +276,7 @@ const Mvp = () => {
       <div className="service-hero">
         <div className="sh-top uiux-hero">
           <img src={Circleblur} alt="Design background blur" />
-          <h1 className="slideinLoad mvp-hero-h1">Get flawless <br />product from scratch</h1 >
+          <h1 className="slideinLoad mvp-hero-h1">Design, build, and launch <br />your MVP in 4 weeks</h1 >
         </div>
 
         <div className="case-box-con uiu-con mvp-video">
