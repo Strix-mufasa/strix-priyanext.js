@@ -101,28 +101,28 @@ const Mvp = () => {
     }
   };
 
-  useEffect(() => {
-    if (window.innerWidth < 768) return
-    if (!videoexRef.current) return
-    const element = videoexRef.current
+  // useEffect(() => {
+  //   if (window.innerWidth < 768) return
+  //   if (!videoexRef.current) return
+  //   const element = videoexRef.current
 
-    const ctx = gsap.context(() => {
-      gsap.to(element, {
-        width: '85vw',
-        height: '90vh',
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: element,
-          start: 'top 80%',
-          end: 'top 20%',
-          scrub: 1,
-          toggleActions: 'play none none reverse',
-        },
-      })
-    })
+  //   const ctx = gsap.context(() => {
+  //     gsap.to(element, {
+  //       width: '85vw',
+  //       height: '90vh',
+  //       ease: 'power2.out',
+  //       scrollTrigger: {
+  //         trigger: element,
+  //         start: 'top 80%',
+  //         end: 'top 20%',
+  //         scrub: 1,
+  //         toggleActions: 'play none none reverse',
+  //       },
+  //     })
+  //   })
 
-    return () => ctx.revert()
-  }, [])
+  //   return () => ctx.revert()
+  // }, [])
 
   const extendRef = useRef(null);
   const timelineRef = useRef(null);
@@ -262,10 +262,12 @@ const Mvp = () => {
           <div
             ref={videoexRef}
             style={{
-              width: '78vw',
-              height: '90vh'
+              width: '100%',
+              maxWidth: '1004px',
+              aspectRatio: '501/251'
             }}
-            className="video-card-container">
+  
+            className="video-card-container mvp-video-card">
             {!isPlaying ? (
               <div className="video-thumbnail">
                 <img
