@@ -308,7 +308,7 @@ const Mvp = () => {
 
       {/* =============Our Successful MVPs============== */}
 <div className="smoothsection sectionCon mvp-success">
-  <h2 className="scrollReveal section-header">Our Successful MVPs</h2>
+<h2 className="scrollReveal mvp-success-heading">Our Successful MVPs</h2>
 
   {/* Card 1 - Kundli Pro */}
   <div className="mvp-success-card scrollReveal">
