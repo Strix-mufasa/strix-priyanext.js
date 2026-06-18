@@ -427,7 +427,7 @@ const Carousel = () => {
             </div>
           ))}
         </div>
-        <div className="carousel-card-info">
+        <div key={currentIndex} className="carousel-card-info animate">
           <p className="carousel-card-category">
             {carouselData[currentIndex % carouselData.length]?.categoryText}
           </p>
