@@ -1,90 +1,194 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 import Nav from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import BlogNav from '../components/BlogNav';
-import { ArrowLeft, Heart, Bookmark, Share2 } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import '@/app/style/blog.css';
-const Circleblur = "/assets/img/sr-img.webp";
+
 import { collection, getDocs, doc, updateDoc, increment } from 'firebase/firestore';
 import { db } from '../admin/firebaseconfig';
+
 const Shadow1 = "/assets/img/shadow1.webp";
 const Shadow2 = "/assets/img/shadow2.webp";
-const Love = "/assets/img/love.svg"
-const Save = "/assets/img/save.svg"
-const Share = "/assets/img/share.svg"
+const Love   = "/assets/img/love.svg";
+const Save   = "/assets/img/save.svg";
+const Share  = "/assets/img/share.svg";
+
+/* ─── helpers ─────────────────────────────────────────────── */
+
+/** Pull every subheading block out of content and build a TOC list */
+const buildTOC = (content = []) =>
+  content
+    .filter(b => b.type === 'subheading' && b.content?.trim())
+    .map(b => ({
+      id:    `sh-${b.id}`,
+      label: b.content.trim(),
+    }));
+
+/** Slugify a subheading id so we can scroll to it */
+const headingId = (blockId) => `sh-${blockId}`;
+
+/* ─── content renderer ────────────────────────────────────── */
+
+const renderContent = (block) => {
+  switch (block.type) {
+    case 'paragraph':
+      return (
+        <p className="blog-writeup" key={block.id}>
+          {block.content}
+        </p>
+      );
+
+    case 'image':
+      return (
+        <React.Fragment key={block.id}>
+          <img
+            className="blog-content-image"
+            src={block.content}
+            alt={block.caption || 'Blog content'}
+          />
+          {block.caption && (
+            <p className="blog-image-caption">{block.caption}</p>
+          )}
+        </React.Fragment>
+      );
+
+    case 'subheading':
+      return (
+        <h2
+          id={headingId(block.id)}
+          className="blog-subheading"
+          key={block.id}
+        >
+          {block.content}
+        </h2>
+      );
+
+    case 'keypoints':
+      return (
+        <ul className="blog-keypoints" key={block.id}>
+          {block.content.map((pt, i) => <li key={i}>{pt}</li>)}
+        </ul>
+      );
+
+    case 'numberedlist':
+      return (
+        <ol className="blog-numbered-list" key={block.id}>
+          {block.content.map((pt, i) => <li key={i}>{pt}</li>)}
+        </ol>
+      );
+
+    case 'quote':
+      return (
+        <blockquote className="blog-quote" key={block.id}>
+          <p>"{block.content}"</p>
+        </blockquote>
+      );
+
+    case 'callout':
+      return (
+        <div className="blog-callout" key={block.id}>
+          <span className="blog-callout-icon">💡</span>
+          <p>{block.content}</p>
+        </div>
+      );
+
+    default:
+      return null;
+  }
+};
+
+/* ─── main component ──────────────────────────────────────── */
 
 const BlogDetails = () => {
   const { id } = useParams();
-  const [blog, setBlog] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [liked, setLiked] = useState(false);
+  const [blog,       setBlog]       = useState(null);
+  const [loading,    setLoading]    = useState(true);
+  const [liked,      setLiked]      = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
+  const [likeCount,  setLikeCount]  = useState(0);
+  const [activeId,   setActiveId]   = useState('');
+  const articleRef = useRef(null);
 
+  /* ── load ── */
   useEffect(() => {
     loadBlogDetails();
-    const savedLiked = localStorage.getItem(`blog_liked_${id}`) === 'true';
-    const savedBookmarked = localStorage.getItem(`blog_bookmarked_${id}`) === 'true';
-    setLiked(savedLiked);
-    setBookmarked(savedBookmarked);
+    setLiked(localStorage.getItem(`blog_liked_${id}`) === 'true');
+    setBookmarked(localStorage.getItem(`blog_bookmarked_${id}`) === 'true');
   }, [id]);
+
+  /* ── TOC active highlight on scroll ── */
+  useEffect(() => {
+    if (!blog?.content) return;
+    const toc = buildTOC(blog.content);
+    if (!toc.length) return;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) setActiveId(e.target.id);
+        });
+      },
+      { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+    );
+
+    toc.forEach(({ id: hid }) => {
+      const el = document.getElementById(hid);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [blog]);
 
   const loadBlogDetails = async () => {
     try {
       setLoading(true);
-      const blogsSnap = await getDocs(collection(db, 'blogs'));
-      const blogData = blogsSnap.docs
-        .map(doc => ({ id: doc.id, ...doc.data() }))
+      const snap = await getDocs(collection(db, 'blogs'));
+      const blogData = snap.docs
+        .map(d => ({ id: d.id, ...d.data() }))
         .find(b => b.id === id);
-      
       setBlog(blogData);
       setLikeCount(blogData?.likes || 0);
-    } catch (error) {
-      console.error('Error loading blog details:', error);
+    } catch (err) {
+      console.error('Error loading blog details:', err);
     } finally {
       setLoading(false);
     }
   };
 
+  /* ── interactions ── */
   const handleLike = async () => {
     if (!blog) return;
-    
-    const newLikedState = !liked;
-    setLiked(newLikedState);
-    localStorage.setItem(`blog_liked_${id}`, newLikedState);
-    
-    const newCount = newLikedState ? likeCount + 1 : likeCount - 1;
-    setLikeCount(newCount);
-    
+    const next = !liked;
+    setLiked(next);
+    localStorage.setItem(`blog_liked_${id}`, next);
+    setLikeCount(c => next ? c + 1 : c - 1);
     try {
       await updateDoc(doc(db, 'blogs', id), {
-        likes: increment(newLikedState ? 1 : -1)
+        likes: increment(next ? 1 : -1),
       });
-    } catch (error) {
-      console.error('Error updating likes:', error);
+    } catch (err) {
+      console.error('Error updating likes:', err);
     }
   };
 
   const handleBookmark = () => {
-    const newBookmarkedState = !bookmarked;
-    setBookmarked(newBookmarkedState);
-    localStorage.setItem(`blog_bookmarked_${id}`, newBookmarkedState);
-    
-    if (newBookmarkedState) {
-      alert('Post bookmarked! 📌');
-    }
+    const next = !bookmarked;
+    setBookmarked(next);
+    localStorage.setItem(`blog_bookmarked_${id}`, next);
+    if (next) alert('Post bookmarked! 📌');
   };
 
   const handleShare = async () => {
     const shareData = {
       title: blog?.headerText || blog?.topic,
-      text: 'Check out this blog post!',
-      url: window.location.href
+      text:  'Check out this blog post!',
+      url:   window.location.href,
     };
-
     try {
       if (navigator.share) {
         await navigator.share(shareData);
@@ -92,51 +196,18 @@ const BlogDetails = () => {
         await navigator.clipboard.writeText(window.location.href);
         alert('Link copied to clipboard! 📋');
       }
-    } catch (error) {
-      console.error('Error sharing:', error);
+    } catch (err) {
+      console.error('Error sharing:', err);
     }
   };
 
-  const renderContent = (contentBlock) => {
-    switch (contentBlock.type) {
-      case 'paragraph':
-        return <p className='blog-writeup' key={contentBlock.id}>{contentBlock.content}</p>;
-      
-      case 'image':
-        return <img className='blog-content-image' key={contentBlock.id} src={contentBlock.content} alt="Blog content" />;
-      
-      case 'subheading':
-        return <h2 className='blog-subheading' key={contentBlock.id}>{contentBlock.content}</h2>;
-      
-      case 'keypoints':
-        return (
-          <ul className='blog-keypoints' key={contentBlock.id}>
-            {contentBlock.content.map((point, index) => (
-              <li key={index}>{point}</li>
-            ))}
-          </ul>
-        );
-      
-      default:
-        return null;
-    }
-  };
-
+  /* ── loading / not found states ── */
   if (loading) {
     return (
       <div>
-
         <Nav />
-           <img
-                    src={Shadow1}
-                    alt=""
-                    className="shadow1 absolute top-10 left-0 w-40"
-                  />
-                  <img
-                    src={Shadow2}
-                    alt=""
-                    className="shadow2 absolute bottom-0 right-0 w-40"
-                  />
+        <img src={Shadow1} alt="" className="shadow1 absolute top-10 left-0 w-40" />
+        <img src={Shadow2} alt="" className="shadow2 absolute bottom-0 right-0 w-40" />
         <div className="blog">
           <div style={{ padding: '40px', textAlign: 'center' }}>
             Loading blog details...
@@ -152,15 +223,16 @@ const BlogDetails = () => {
       <div>
         <Nav />
         <div className="blog">
-          <div style={{ padding: '40px', textAlign: 'center' }}>
-            Blog not found
-          </div>
+          <div style={{ padding: '40px', textAlign: 'center' }}>Blog not found</div>
         </div>
         <Footer />
       </div>
     );
   }
 
+  const toc = buildTOC(blog.content || []);
+
+  /* ── render ── */
   return (
     <div>
       <SEO
@@ -169,110 +241,120 @@ const BlogDetails = () => {
         canonical={`https://www.strixproduction.com/blog/${id}`}
       />
       <Nav />
-      <div className="blog">
+
+      <div className="blog blog-detail-page">
+
+        {/* ── back button ── */}
         <div className="blog-top">
-          <Link href='/blog'>
+          <Link href="/blog">
             <button className="back-button">
               <ArrowLeft size={16} /> Return to Blog
             </button>
           </Link>
         </div>
 
-        {/* HERO SECTION - UNCHANGED, USES YOUR ORIGINAL STATIC DESIGN */}
-        <div className="blog-deatil-hero">
-          <div className="slidein sh-top uiux-hero">
-            <img src={Circleblur} alt="" />
-            <h1>Our Space to <br/>Think and Share</h1>
+        {/* ── full-width hero image ── */}
+        {blog.detailsImage && (
+          <div className="bd-hero-image-wrap">
+            <img
+              className="bd-hero-image"
+              src={blog.detailsImage}
+              alt={blog.headerText || blog.topic}
+            />
           </div>
-        </div>
+        )}
 
-        <div className="blog-con">
-          <div className="blog-nav">
-            <BlogNav />
-          </div>
+        {/* ── two-column body ── */}
+        <div className="bd-body">
 
-          {/* ONLY THIS SECTION GETS DATA FROM FIREBASE */}
-          <div className="blogcards blog-con-de">
-            <img className='blogdetails-img' src={blog.detailsImage} alt="" />
-            <p className='blog-tag de-blog-tag'>{blog.tag}</p>
-            <h2>{blog.headerText || blog.topic}</h2>
-            
-            {/* First paragraph */}
-            {blog.content && blog.content.length > 0 && blog.content[0].type === 'paragraph' && (
-              <p className='blog-writeup'>{blog.content[0].content}</p>
-            )}
+          {/* ── LEFT SIDEBAR ── */}
+          <aside className="bd-sidebar">
 
-            {/* Social Icons */}
-            <div className="blog-iconn">
-              <div
-                className={`blog-action-btn love ${liked ? 'active' : ''}`} 
+            {/* Tag + date */}
+            <div className="bd-meta">
+              {blog.tag && <span className="blog-tag">{blog.tag}</span>}
+              {blog.date && <span className="bd-date">{blog.date}</span>}
+            </div>
+
+            {/* Social actions */}
+            <div className="bd-actions">
+              <button
+                className={`bd-action-btn ${liked ? 'active' : ''}`}
                 onClick={handleLike}
                 title="Like"
               >
-                <img className='reaction' src={Love} alt="" />
-                {likeCount > 0 && <span className="like-count">{likeCount}</span>}
-              </div>
-              
-              <div
-                className={`blog-action-btn favourite ${bookmarked ? 'active' : ''}`} 
+                <img className="reaction" src={Love} alt="Like" />
+                {likeCount > 0 && <span className="bd-like-count">{likeCount}</span>}
+              </button>
+
+              <button
+                className={`bd-action-btn ${bookmarked ? 'active' : ''}`}
                 onClick={handleBookmark}
                 title="Bookmark"
               >
-                <img className='reaction' src={Save} alt="" />
-              </div>
-              
-              <div 
-                className="blog-action-btn share" 
+                <img className="reaction" src={Save} alt="Bookmark" />
+              </button>
+
+              <button
+                className="bd-action-btn"
                 onClick={handleShare}
                 title="Share"
               >
-                <img className='reaction' src={Share} alt="" />
-              </div>
+                <img className="reaction" src={Share} alt="Share" />
+              </button>
             </div>
 
-            {/* Remaining content */}
-            {blog.content && blog.content.length > 0 && 
-              blog.content.slice(blog.content[0].type === 'paragraph' ? 1 : 0).map((block) => (
+            {/* Table of contents */}
+            {toc.length > 0 && (
+              <nav className="bd-toc">
+                <p className="bd-toc-title">Table of Contents</p>
+                <ul className="bd-toc-list">
+                  {toc.map(item => (
+                    <li key={item.id}>
+                      <a
+                        href={`#${item.id}`}
+                        className={`bd-toc-link ${activeId === item.id ? 'bd-toc-link--active' : ''}`}
+                        onClick={e => {
+                          e.preventDefault();
+                          document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )}
+          </aside>
+
+          {/* ── RIGHT ARTICLE CONTENT ── */}
+          <article className="bd-article" ref={articleRef}>
+            {/* Title */}
+            <h1 className="bd-article-title">
+              {blog.headerText || blog.topic}
+            </h1>
+
+            {/* All content blocks in order */}
+            {blog.content && blog.content.length > 0 ? (
+              blog.content.map(block => (
                 <div key={block.id}>
                   {renderContent(block)}
                 </div>
               ))
-            }
-
-            {(!blog.content || blog.content.length === 0) && (
-              <p className='blog-writeup'>No content available.</p>
+            ) : (
+              <p className="blog-writeup">No content available.</p>
             )}
-          </div>
+          </article>
         </div>
       </div>
+
       <Footer />
     </div>
   );
 };
 
 export default BlogDetails;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

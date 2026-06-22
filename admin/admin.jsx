@@ -1588,8 +1588,9 @@ const BlogForm = ({ editingItem, setEditingItem, setShowForm, loadData }) => {
   const addContentBlock = (type) => {
     const newBlock = {
       id: Date.now(),
-      type: type, // 'paragraph', 'image', 'subheading', 'keypoints'
-      content: type === 'keypoints' ? [''] : ''
+      type: type, // 'paragraph', 'image', 'subheading', 'keypoints', 'quote', 'callout', 'numberedlist'
+      content: (type === 'keypoints' || type === 'numberedlist') ? [''] : '',
+      ...(type === 'image' ? { caption: '' } : {})
     };
     setFormData(prev => ({
       ...prev,
@@ -1813,6 +1814,9 @@ const BlogForm = ({ editingItem, setEditingItem, setShowForm, loadData }) => {
                     {block.type === 'image' && '🖼️ Image'}
                     {block.type === 'subheading' && '📌 Subheading'}
                     {block.type === 'keypoints' && '📋 Key Points'}
+                    {block.type === 'numberedlist' && '🔢 Numbered List'}
+                    {block.type === 'quote' && '💬 Quote'}
+                    {block.type === 'callout' && '💡 Tip / Callout'}
                   </span>
                   <div className="content-block-actions">
                     <button type="button" onClick={() => moveContentBlock(block.id, 'up')} disabled={index === 0}>
@@ -1846,6 +1850,14 @@ const BlogForm = ({ editingItem, setEditingItem, setShowForm, loadData }) => {
                       className="form-input-file-small"
                     />
                     {block.content && <img src={block.content} className="content-image-preview" alt="Content" />}
+                    <input
+                      type="text"
+                      value={block.caption || ''}
+                      onChange={(e) => updateContentBlock(block.id, 'caption', e.target.value)}
+                      className="form-input"
+                      placeholder="Optional caption (shown below image)"
+                      style={{ marginTop: '0.5rem' }}
+                    />
                   </div>
                 )}
 
@@ -1859,7 +1871,27 @@ const BlogForm = ({ editingItem, setEditingItem, setShowForm, loadData }) => {
                   />
                 )}
 
-                {block.type === 'keypoints' && (
+                {block.type === 'quote' && (
+                  <textarea
+                    value={block.content}
+                    onChange={(e) => updateContentBlock(block.id, 'content', e.target.value)}
+                    className="form-textarea"
+                    placeholder="Enter quote text..."
+                    rows={3}
+                  />
+                )}
+
+                {block.type === 'callout' && (
+                  <textarea
+                    value={block.content}
+                    onChange={(e) => updateContentBlock(block.id, 'content', e.target.value)}
+                    className="form-textarea"
+                    placeholder="Enter tip / callout text..."
+                    rows={3}
+                  />
+                )}
+
+                {(block.type === 'keypoints' || block.type === 'numberedlist') && (
                   <div className="keypoints-container">
                     {block.content.map((point, i) => (
                       <div key={i} className="keypoint-item">
@@ -1868,7 +1900,7 @@ const BlogForm = ({ editingItem, setEditingItem, setShowForm, loadData }) => {
                           value={point}
                           onChange={(e) => updateKeyPoint(block.id, i, e.target.value)}
                           className="form-input"
-                          placeholder={`Key point ${i + 1}`}
+                          placeholder={block.type === 'numberedlist' ? `Step ${i + 1}` : `Key point ${i + 1}`}
                         />
                         <button type="button" onClick={() => deleteKeyPoint(block.id, i)} className="delete-keypoint-btn">
                           ✕
@@ -1876,7 +1908,7 @@ const BlogForm = ({ editingItem, setEditingItem, setShowForm, loadData }) => {
                       </div>
                     ))}
                     <button type="button" onClick={() => addKeyPoint(block.id)} className="add-keypoint-btn">
-                      + Add Point
+                      {block.type === 'numberedlist' ? '+ Add Step' : '+ Add Point'}
                     </button>
                   </div>
                 )}
@@ -1895,6 +1927,15 @@ const BlogForm = ({ editingItem, setEditingItem, setShowForm, loadData }) => {
               </button>
               <button type="button" onClick={() => addContentBlock('keypoints')} className="add-content-btn">
                 Add Key Points
+              </button>
+              <button type="button" onClick={() => addContentBlock('numberedlist')} className="add-content-btn">
+                Add Numbered List
+              </button>
+              <button type="button" onClick={() => addContentBlock('quote')} className="add-content-btn">
+                Add Quote
+              </button>
+              <button type="button" onClick={() => addContentBlock('callout')} className="add-content-btn">
+                Add Tip / Callout
               </button>
             </div>
           </div>
@@ -2049,13 +2090,3 @@ const DataTable = ({ activeTab, items, setShowForm, setEditingItem, loadData }) 
 
 
 export default AdminPanel;
-
-
-
-
-
-
-
-
-
-
