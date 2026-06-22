@@ -107,11 +107,13 @@ const Blog = () => {
             src={Shadow1}
             alt=""
             className="shadow1 absolute top-10 left-0 w-40"
+            style={{ zIndex: -1, pointerEvents: 'none' }}
           />
           <img
             src={Shadow2}
             alt=""
             className="shadow2 bgsha absolute bottom-0 right-0 w-40"
+            style={{ zIndex: -1, pointerEvents: 'none' }}
           />
           <div className="blog-top">
              <Link href='/' className="back-button">
@@ -159,7 +161,7 @@ const Blog = () => {
                           </div>
                           <div className="blog-details">
                             <p className='blog-tag'>{blog.tag || 'General'}</p>
-                            <p className="blog-date">{formatDate(blog.date)}</p>
+                            <p className="blog-date">{formatDate(blog.createdAt ||blog.date)}</p>
                             <p className="description-blog">{blog.topic}</p>
                           </div>
                         </div>
