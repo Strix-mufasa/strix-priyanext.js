@@ -240,7 +240,7 @@ const BlogDetails = () => {
               </div>
             </div>
 
-            <div className="bd-actions">
+            {/* <div className="bd-actions">
               <button className={`bd-action-btn ${liked ? 'bd-action-btn--active' : ''}`} onClick={handleLike} title="Like">
                 <img className="reaction" src={Love} alt="Like" />
                 {likeCount > 0 && <span className="bd-like-count">{likeCount}</span>}
@@ -248,12 +248,12 @@ const BlogDetails = () => {
               <button className={`bd-action-btn ${bookmarked ? 'bd-action-btn--active' : ''}`} onClick={handleBookmark} title="Bookmark">
                 <img className="reaction" src={Save} alt="Bookmark" />
               </button>
-            </div>
+            </div> */}
           </aside>
 
           {/* MIDDLE article */}
           <article className="bd-article" ref={articleRef}>
-            <h1 className="bd-title">{blog.headerText || blog.topic}</h1>
+            {/* <h1 className="bd-title">{blog.headerText || blog.topic}</h1> */}
             {blog.content && blog.content.length > 0 ? (
               blog.content.map(block => (
                 <React.Fragment key={block.id}>
