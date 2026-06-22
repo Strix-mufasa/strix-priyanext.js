@@ -287,7 +287,7 @@ const Carousel = () => {
       position: 'relative',
       width: '100%',
       height: '100%',
-      borderRadius: '2rem',
+      borderRadius: ' 2rem 2rem 0 0',
       overflow: 'hidden',
       boxShadow: '0 15px 30px -10px rgba(0, 0, 0, 0.6)',
       transition: 'box-shadow 0.3s ease',
@@ -427,7 +427,7 @@ const Carousel = () => {
             </div>
           ))}
         </div>
-        <div className="carousel-card-info">
+        <div key={currentIndex} className="carousel-card-info animate">
           <p className="carousel-card-category">
             {carouselData[currentIndex % carouselData.length]?.categoryText}
           </p>
