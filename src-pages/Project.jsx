@@ -91,6 +91,7 @@ const FilterModal = ({ category, activeSubFilter, onClose, onFilterSelect, onCat
 };
 
 const Project = () => {
+  
   const [projects, setProjects] = useState([]);
   const [filteredProjects, setFilteredProjects] = useState([]);
   const [activeFilter, setActiveFilter] = useState('All');
@@ -223,7 +224,7 @@ const Project = () => {
         <p className='project-hero-p slideinLoad'>Explore how we craft experiences that work and wow - one project at a time</p>
         <div className='project-carousel-con'>
           <img src={ProjectCircle} className='ProjectCircle scaleLoad' alt="Project Circle" />
-          <h2>Latest Projects</h2>
+          {/* <h2>Latest Projects</h2> */}
           <Carousel />
         </div>
         <img src={Blur1} className='p-blur1' alt="Blur" />
@@ -270,7 +271,7 @@ const Project = () => {
           }}
         >
           <span>Industries</span>
-          <span className={`industry-arrow ${industryModal ? 'rotate' : ''}`}>∨</span>
+          {/* <span className={`industry-arrow ${industryModal ? 'rotate' : ''}`}>∨</span> */}
         </div>
 
         {industryModal && (
@@ -349,7 +350,9 @@ const Project = () => {
                   alt={project.title}
                 />
                 <p>{project.categoryText}</p>
-                <Link className='linkkk' href={project.link || `/case-study/${project.id}`}>
+                <Link className='linkkk' href={project.link && project.link.startsWith('http') 
+                    ? project.link 
+                    : `/case-study/${project.id}`}>
                   <div>
                     <h2>{project.title}</h2>
                     <img src={Arrow} className='icon' alt="Arrow" />

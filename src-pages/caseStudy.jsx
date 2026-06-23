@@ -1,5 +1,5 @@
 "use client"
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import Nav from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
@@ -80,7 +80,7 @@ const reconstructSectionData = (mainData, chunks) => {
   if (!reconstructed.aboutProject) {
     reconstructed.aboutProject = { 
       description: '', 
-      experienceLink: '',  // 👈 ADD THIS
+      experienceLink: '',  
       images: ['', '', ''] 
     };
   }
@@ -241,7 +241,7 @@ useEffect(() => {
 
 const CaseStudy = () => {
   const { id } = useParams()
-  const navigate = useRouter()
+  const router = useRouter()
   const carouselRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [caseStudy, setCaseStudy] = useState(null)
@@ -513,7 +513,7 @@ box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
             Project ID: {id}
           </p>
           <button 
-            onClick={() => navigate('/projects')}
+            onClick={() => router.push('/projects')}
             style={{
               marginTop: '30px',
               padding: '15px 30px',
@@ -565,7 +565,7 @@ box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
       <div className="case-hero">
         <motion.div 
           className="case-return-btn" 
-          onClick={() => navigate('/project')} 
+          onClick={() => router.push('/project')} 
           style={{ cursor: 'pointer' }}
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -663,7 +663,7 @@ box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
 
       {/* =======================Circle============= */}
       {nextProject ? (
-        <NextProjectSection nextProject={nextProject} navigate={navigate} />
+        <NextProjectSection nextProject={nextProject} navigate={router} />
       ) : (
         <div style={{ padding: '50px', color: '#fff', textAlign: 'center' }}>
           <p>Debug: Next Project = {nextProject ? 'exists' : 'null'}</p>
@@ -1258,7 +1258,7 @@ const NextProjectSection = ({ nextProject, navigate }) => {
     <div className="book-container case-circle" ref={ref}>
       <motion.div 
         className="bool-container-card" 
-        onClick={() => navigate(`/case-study/${nextProject.projectId || nextProject.id}`)}
+        onClick={() => router.push(`/case-study/${nextProject.projectId || nextProject.id}`)}
         style={{ cursor: 'pointer' }}
         initial={{ opacity: 0, scale: 0.8, rotateZ: -10 }}
         animate={isInView ? { opacity: 1, scale: 1, rotateZ: 0 } : { opacity: 0, scale: 0.8, rotateZ: -10 }}
