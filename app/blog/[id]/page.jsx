@@ -10,72 +10,22 @@ import '@/app/style/blog.css';
 import { collection, getDocs, doc, updateDoc, increment } from 'firebase/firestore';
 import { db } from '../../../admin/firebaseconfig';
 
-const Love  = "/assets/img/love.svg";
-const Save  = "/assets/img/save.svg";
-
 const buildTOC = (content = []) =>
   content
     .filter(b => b.type === 'subheading' && b.content?.trim())
     .map(b => ({ id: `sh-${b.id}`, label: b.content.trim() }));
 
-const renderContent = (block) => {
-  switch (block.type) {
-    case 'paragraph':
-      return <p className="blog-writeup" key={block.id}>{block.content}</p>;
-    case 'image':
-      return (
-        <React.Fragment key={block.id}>
-          <img className="blog-content-image" src={block.content} alt={block.caption || 'Blog content'} />
-          {block.caption && <p className="blog-image-caption">{block.caption}</p>}
-        </React.Fragment>
-      );
-    case 'subheading':
-      return <h2 id={`sh-${block.id}`} className="blog-subheading" key={block.id}>{block.content}</h2>;
-    case 'keypoints':
-      return (
-        <ul className="blog-keypoints" key={block.id}>
-          {block.content.map((pt, i) => <li key={i}>{pt}</li>)}
-        </ul>
-      );
-    case 'numberedlist':
-      return (
-        <ol className="blog-numbered-list" key={block.id}>
-          {block.content.map((pt, i) => <li key={i}>{pt}</li>)}
-        </ol>
-      );
-    case 'quote':
-      return (
-        <blockquote className="blog-quote" key={block.id}>
-          <p>"{block.content}"</p>
-        </blockquote>
-      );
-    case 'callout':
-      return (
-        <div className="blog-callout" key={block.id}>
-          <span className="blog-callout-icon">💡</span>
-          <p>{block.content}</p>
-        </div>
-      );
-    default:
-      return null;
-  }
-};
-
 const BlogDetails = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [liked, setLiked] = useState(false);
-  const [bookmarked, setBookmarked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
   const [activeId, setActiveId] = useState('');
+  const [openFaq, setOpenFaq] = useState(null);
   const articleRef = useRef(null);
 
   useEffect(() => {
     if (!id) return;
     loadBlogDetails();
-    setLiked(localStorage.getItem(`blog_liked_${id}`) === 'true');
-    setBookmarked(localStorage.getItem(`blog_bookmarked_${id}`) === 'true');
   }, [id]);
 
   useEffect(() => {
@@ -99,7 +49,6 @@ const BlogDetails = () => {
       const snap = await getDocs(collection(db, 'blogs'));
       const blogData = snap.docs.map(d => ({ id: d.id, ...d.data() })).find(b => b.id === id);
       setBlog(blogData);
-      setLikeCount(blogData?.likes || 0);
     } catch (err) {
       console.error('Error loading blog details:', err);
     } finally {
@@ -107,22 +56,92 @@ const BlogDetails = () => {
     }
   };
 
-  const handleLike = async () => {
-    if (!blog) return;
-    const next = !liked;
-    setLiked(next);
-    localStorage.setItem(`blog_liked_${id}`, next);
-    setLikeCount(c => next ? c + 1 : c - 1);
-    try {
-      await updateDoc(doc(db, 'blogs', id), { likes: increment(next ? 1 : -1) });
-    } catch (err) { console.error(err); }
-  };
+  /* ── content renderer — inside component so it can access openFaq state ── */
+  const renderContent = (block) => {
+    switch (block.type) {
+      // case 'paragraph':
+      //   return <p className="blog-writeup" key={block.id}>{block.content}</p>;
+      case 'paragraph':
+        return (
+          <p className="blog-writeup" key={block.id}>
+            {block.content.split('\n').map((line, i, arr) => (
+              <React.Fragment key={i}>
+                {line}
+                {i < arr.length - 1 && <br />}
+              </React.Fragment>
+            ))}
+          </p>
+        );
+      case 'image':
+        return (
+          <React.Fragment key={block.id}>
+            <img className="blog-content-image" src={block.content} alt={block.caption || 'Blog content'} />
+            {block.caption && <p className="blog-image-caption">{block.caption}</p>}
+          </React.Fragment>
+        );
 
-  const handleBookmark = () => {
-    const next = !bookmarked;
-    setBookmarked(next);
-    localStorage.setItem(`blog_bookmarked_${id}`, next);
-    if (next) alert('Post bookmarked! 📌');
+      case 'subheading':
+        return <h2 id={`sh-${block.id}`} className="blog-subheading" key={block.id}>{block.content}</h2>;
+
+      case 'keypoints':
+        return (
+          <ul className="blog-keypoints" key={block.id}>
+            {block.content.map((pt, i) => <li key={i}>{pt}</li>)}
+          </ul>
+        );
+
+      case 'numberedlist':
+        return (
+          <ol className="blog-numbered-list" key={block.id}>
+            {block.content.map((pt, i) => <li key={i}>{pt}</li>)}
+          </ol>
+        );
+
+      case 'quote':
+        return (
+          <blockquote className="blog-quote" key={block.id}>
+            <p>"{block.content}"</p>
+          </blockquote>
+        );
+
+      case 'callout':
+        return (
+          <div className="blog-callout" key={block.id}>
+            <span className="blog-callout-icon">💡</span>
+            <p>{block.content}</p>
+          </div>
+        );
+
+      case 'faq':
+        return (
+          <div className="bd-faq-item" key={block.id}>
+            <button
+              className={`bd-faq-question ${openFaq === block.id ? 'bd-faq-open' : ''}`}
+              onClick={() => setOpenFaq(openFaq === block.id ? null : block.id)}
+            >
+              <span>{block.question}</span>
+              <svg
+                className="bd-faq-arrow"
+                width="20" height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+            {openFaq === block.id && (
+              <div className="bd-faq-answer">
+                <p>{block.answer}</p>
+              </div>
+            )}
+          </div>
+        );
+
+      default:
+        return null;
+    }
   };
 
   if (loading) {
@@ -171,7 +190,7 @@ const BlogDetails = () => {
 
         {/* 1. back button */}
         <div className="bd-back-row">
-          <Link href="/blog" className="back-button">
+          <Link href="/blog" className="back-button" style={{ color: '#ffffff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
             <ArrowLeft size={16} /> Return to Blog
           </Link>
         </div>
@@ -209,7 +228,7 @@ const BlogDetails = () => {
         {/* 5. three-column content */}
         <div className="bd-columns">
 
-          {/* LEFT sidebar — share + actions */}
+          {/* LEFT sidebar — share */}
           <aside className="bd-sidebar-left">
             <p className="bd-posted">Posted: {blog.date || ''}</p>
 
@@ -239,21 +258,10 @@ const BlogDetails = () => {
                 </button>
               </div>
             </div>
-
-            {/* <div className="bd-actions">
-              <button className={`bd-action-btn ${liked ? 'bd-action-btn--active' : ''}`} onClick={handleLike} title="Like">
-                <img className="reaction" src={Love} alt="Like" />
-                {likeCount > 0 && <span className="bd-like-count">{likeCount}</span>}
-              </button>
-              <button className={`bd-action-btn ${bookmarked ? 'bd-action-btn--active' : ''}`} onClick={handleBookmark} title="Bookmark">
-                <img className="reaction" src={Save} alt="Bookmark" />
-              </button>
-            </div> */}
           </aside>
 
           {/* MIDDLE article */}
           <article className="bd-article" ref={articleRef}>
-            {/* <h1 className="bd-title">{blog.headerText || blog.topic}</h1> */}
             {blog.content && blog.content.length > 0 ? (
               blog.content.map(block => (
                 <React.Fragment key={block.id}>

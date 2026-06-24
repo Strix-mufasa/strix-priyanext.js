@@ -110,6 +110,7 @@
     font-size: 17px;
     line-height: 1.8;
     color: #e3e2e2;
+    font-family: 'Epilogue', sans-serif;
 }
 
 .blog-subheading{
@@ -482,10 +483,11 @@
 }
 
 .bd-article .blog-writeup {
-    font-size: 16px;
-    line-height: 1.85;
-    color: #bbb;
-    margin-bottom: 0.8rem;
+    font-size: 18px;
+    line-height: 1.9;
+    color: #ddd;
+    margin-bottom: 1rem;
+    font-family: 'Epilogue', sans-serif;
 }
 
 .bd-article .blog-subheading {
@@ -594,3 +596,34 @@
     .bd-title { font-size: 1.6rem; }
     .bd-ai-bar-wrapper { width: 100%; padding: 0 4%; }
 }
+
+.bd-faq-item {
+    width: 100%;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0.75rem;
+    margin-bottom: 0.8rem;
+    overflow: hidden;
+    background: rgba(255,255,255,0.02);
+}
+.bd-faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.3rem;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: 'Clash Display', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.bd-faq-question:hover { background: rgba(255,255,255,0.04); }
+.bd-faq-arrow { flex-shrink: 0; color: #888; transition: transform 0.25s ease; }
+.bd-faq-open .bd-faq-arrow { transform: rotate(180deg); }
+.bd-faq-answer { padding: 0 1.3rem 1.1rem 1.3rem; border-top: 1px solid rgba(255,255,255,0.06); }
+.bd-faq-answer p { font-size: 15px; line-height: 1.7; color: #999; margin: 0.8rem 0 0 0; }
+
