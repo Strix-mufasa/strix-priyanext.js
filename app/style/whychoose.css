@@ -1,0 +1,97 @@
+.why-section {
+  width: 100%;
+  padding: 25px 40px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+/* ── Main wide card ── */
+.why-main-card {
+  width: 100%;
+  max-width: 1057px;
+  border-radius: 21px;
+  border: 1.336px solid #999;
+  background: #000;
+  padding: 36px 40px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.why-main-title {
+  font-family: "Epilogue", sans-serif;
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: 2.55px;
+  line-height: 1.2;
+  background: linear-gradient(183deg, #FFF 2.24%, #999 97.76%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+}
+
+.why-main-sub {
+  font-family: "Epilogue", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 24px;
+}
+
+/* ── Bottom 3 cards row ── */
+.why-cards-row {
+  width: 100%;
+  max-width: 1057px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+  align-items: stretch;
+  height: 220px;
+}
+
+.why-card {
+  position: relative;
+  flex: 1;
+  border-radius: 21px;
+  border: 1.336px solid #999;
+  background: #000;
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 220px;
+}
+
+.why-card-img {
+  padding: 0;
+}
+
+.why-card-full-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 21px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .why-cards-row {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .why-card {
+    height: 260px;
+  }
+
+  .why-main-title {
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+}

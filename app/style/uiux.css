@@ -236,9 +236,32 @@
 
 .what-con{
     margin-top: -10%;
-    margin-bottom: 15%;
+    margin-bottom: 0%;
+    z-index: 1;
+    position: relative;
 }
 
+.project-carousel-con {
+  position: relative;
+  z-index: 10;
+  margin-top: 80px;
+}
+
+.project-carousel-con h2 {
+  position: relative;
+  font-family: "Clash Display";
+  z-index: 10;
+  color: #000;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 30px;
+  letter-spacing: 2.25px;
+  text-align: center;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 30px;
+    
+}
 .what-con p{
     max-width: 60%;
     line-height: 1.8rem;
