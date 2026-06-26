@@ -32,6 +32,8 @@ import ScrollAnimation from '../../animations/scrollReveal'
 import SlideInFramerOnLoad from '../../animations/SlideInFramerOnLoad'
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Link from 'next/link'
+import WhyChooseUs from '@/components/WhyChooseUs';
+import NumbersSection from '@/components/NumbersSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -196,7 +198,7 @@ const WebDesign = () => {
                             </div>
                         </div>
                         <p className="provide-card-p">At Strix Productions, we design, develop, and deliver world-class visuals and experience</p>
-                        <BtnNormsall text="Get a quote" to="/contact" />
+                        <BtnNormsall text="View Work" to="/contact" />
                     </div>
 
                     <div className="provide-card p-sec2-card2">
@@ -208,7 +210,7 @@ const WebDesign = () => {
                             </div>
                         </div>
                         <p className="provide-card-p">At Strix Productions, we design, develop, and deliver world-class visuals and experience</p>
-                        <BtnNormsall text="Get a quote" to="/contact" />
+                        <BtnNormsall text="View Work" to="/contact" />
                     </div>
 
                     <div className="provide-card p-sec2-card1">
@@ -220,7 +222,7 @@ const WebDesign = () => {
                             </div>
                         </div>
                         <p className="provide-card-p">At Strix Productions, we design, develop, and deliver world-class visuals and experience</p>
-                        <BtnNormsall text="Get a quote" to="/contact" />
+                        <BtnNormsall text="View Work" to="/contact" />
                     </div>
 
                     <div className="provide-card p-sec2-card2">
@@ -232,18 +234,18 @@ const WebDesign = () => {
                             </div>
                         </div>
                         <p className="provide-card-p">At Strix Productions, we design, develop, and deliver world-class visuals and experience</p>
-                        <BtnNormsall text="Get a quote" to="/contact" />
+                        <BtnNormsall text="View Work" to="/contact" />
                     </div>
                 </div>
             </div>
-
+           <NumbersSection />
             {/* ===================why================== */}
             <div className="sh-top uiux-hero what-con">
                 <img src={Circleblur} alt="" />
                 <h2 className="scrollReveal">Why Choose us ?</h2>
                 <p className="p-inde scrollReveal">Our web design practice combines research, strategy, and sleek execution — helping startups and enterprises create websites that actually perform.</p>
             </div>
-
+            <WhyChooseUs />
             <div className='project-carousel-con'>
                 <CircleBlurAnimation className="ProjectCircle" src={ProjectCircle} />
                 <h2>Related Projects</h2>

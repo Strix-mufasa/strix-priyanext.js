@@ -1,40 +1,25 @@
 "use client"
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import Nav from '../../components/Navbar'
-const Circleblur = "/assets/img/sr-img.webp"
-const Connect = "/assets/img/connect.svg"
-import BtnNormsall from '../../components/normSmall-btn';
-import Footer from '../../components/Footer'
-const Blur1 = "/assets/img/p-blur2.png"
-const Blur2 = "/assets/img/p-blur1.png"
-const Blur3 = "/assets/img/Ellipse 7.png"
-const BookTxt = "/assets/img/Book-txt.png"
-const Blur4 = "/assets/img/Ellipse 8.png"
-const Kundali = "/assets/img/kundali-case-study.webp"
+import Nav from '@/components/Navbar'
+import BtnNormsall from '@/components/normSmall-btn';
+import Footer from '@/components/Footer'
 import { Play } from 'lucide-react';
-const Circle = "/assets/img/updown-circle.webp"
 import '@/app/style/uiux.css'
 import Link from 'next/link'
-const CardImg = "/assets/img/ui-card.webp"
-const Cardcon1 = "/assets/img/ui-card1.png"
-const Cardcon2 = "/assets/img/ui-card2.png"
-import ProjectCarousel from "../../components/projectCarouel";
-import Button from "../../components/Button";
-const ProjectCircle = "/assets/img/project-circle.webp"
-const HeroImg = "/assets/img/serv.webp"
+import ProjectCarousel from "@/components/projectCarouel";
+import Button from "@/components/Button";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import DotGrid from "../../animations/DotGrid";
-import RotateCardsScroll from '../../animations/RotateCardsScroll'
-import ScrollSlideAnimations from '../../animations/slideins'
-import Stagger from '../../animations/stagger'
-import ScrollAnimation from '../../animations/scrollReveal'
-import SlideInFramerOnLoad from '../../animations/SlideInFramerOnLoad'
+import RotateCardsScroll from '@/animations/RotateCardsScroll'
+import ScrollSlideAnimations from '@/animations/slideins'
+import Stagger from '@/animations/stagger'
+import SlideInFramerOnLoad from '@/animations/SlideInFramerOnLoad'
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import SEO from '../../components/SEO'
-import FAQ from "../../components/FAQ";
-
+import SEO from '@/components/SEO'
+import FAQ from "@/components/FAQ";
+import NumbersSection from '@/components/NumbersSection';
+import WhyChooseUs from '@/components/WhyChooseUs';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -78,29 +63,15 @@ const Product = () => {
         ref={ref}
         src={src}
         className={className}
-        initial={{
-          scale: 0.7,
-          opacity: 0,
-          x: "-50%",
-        }}
-        animate={
-          isInView
-            ? { scale: 1, opacity: 1, x: "-50%", }
-            : { x: "-50%" }
-        }
-        transition={{
-          duration: 1.2,
-          ease: [0.25, 0.1, 0.25, 1],
-        }}
-        style={{
-          position: "absolute",
-          left: "50%",
-          transformOrigin: "center center",
-        }}
+        initial={{ scale: 0.7, opacity: 0, x: "-50%" }}
+        animate={isInView ? { scale: 1, opacity: 1, x: "-50%" } : { x: "-50%" }}
+        transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+        style={{ position: "absolute", left: "50%", transformOrigin: "center center", zIndex: 0 }}
       />
     );
   };
-  const faqData = [ 
+
+  const faqData = [
     {
       question: "What product development services does Strix Production provide?",
       answer: "End-to-end product development helps startups turn ideas into functional products through strategy, design, prototyping, and development. Strix Production delivers scalable solutions, guiding businesses from concept to launch with strong performance."
@@ -112,46 +83,21 @@ const Product = () => {
     {
       question: "Why should startups invest in digital product development services?",
       answer: "Digital product development services turn ideas into market-ready platforms using design, engineering, and strategy. Strix Production delivers user-focused, scalable solutions with strong performance to support long-term growth."
-     },
-     {
+    },
+    {
       question: "What makes a reliable product development company for startups?",
       answer: "A product development company builds innovative digital solutions using strategy, design, and engineering. Strix Production helps startups create scalable products with strong architecture, user-focused design, and growth-driven development."
-     }
-
+    }
   ];
 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [{
+    "mainEntity": faqData.map(({ question, answer }) => ({
       "@type": "Question",
-      "name": "What product development services does Strix Production provide?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "End-to-end product development helps startups turn ideas into functional products through strategy, design, prototyping, and development. Strix Production delivers scalable solutions, guiding businesses from concept to launch with strong performance."
-      }
-    },{
-      "@type": "Question",
-      "name": "How does product design and development help startups launch faster?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Product design and development help startups validate ideas, build prototypes, and create scalable solutions. Strix Production offers UI/UX design, prototyping, and agile development to deliver products aligned with market needs."
-      }
-    },{
-      "@type": "Question",
-      "name": "Why should startups invest in digital product development services?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Digital product development services turn ideas into market-ready platforms using design, engineering, and strategy. Strix Production delivers user-focused, scalable solutions with strong performance to support long-term growth."
-      }
-    },{
-      "@type": "Question",
-      "name": "What makes a reliable product development company for startups?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A product development company builds innovative digital solutions using strategy, design, and engineering. Strix Production helps startups create scalable products with strong architecture, user-focused design, and growth-driven development."
-      }
-    }]
+      "name": question,
+      "acceptedAnswer": { "@type": "Answer", "text": answer }
+    }))
   };
 
   return (
@@ -163,51 +109,43 @@ const Product = () => {
       />
       <Nav />
       <SlideInFramerOnLoad />
-      {/* <ScrollAnimation /> */}
       <RotateCardsScroll />
       <ScrollSlideAnimations />
       <Stagger />
-      {/* DotGrid removed */}
-
-
-
 
       {/* =============== service-hero ============ */}
       <div className="service-hero">
-        <div className="returnNext" >
-          <Link href='/service'><button className="back-button">
-            <ArrowLeft size={16} /> Return to Service
-          </button></Link>
-
-          <Link href='/cdesign'><button className="back-button">
-            Next Service <ArrowRight size={16} />
-          </button></Link>
+        <div className="returnNext">
+          <Link href='/service'>
+            <button className="back-button">
+              <ArrowLeft size={16} /> Return to Service
+            </button>
+          </Link>
+          <Link href='/cdesign'>
+            <button className="back-button">
+              Next Service <ArrowRight size={16} />
+            </button>
+          </Link>
         </div>
+
         <div className="sh-top uiux-hero">
-          <img src={Circleblur} alt="" />
+          <img src="/assets/img/sr-img.webp" alt="" />
           <h1 className="slideinLoad">Product design</h1>
         </div>
 
         <div className="case-box-con uiu-con">
-          <img src={Blur3} className="blur3-hero-left" alt="" />
-          <img src={Blur4} className="blur3-hero-right" alt="" />
+          <img src="/assets/img/Ellipse 7.png" className="blur3-hero-left" alt="" />
+          <img src="/assets/img/Ellipse 8.png" className="blur3-hero-right" alt="" />
           <div
             ref={videoexRef}
-            style={{
-              width: '78vw',
-              height: '90vh'
-            }}
-            className="video-card-container">
+            style={{ width: '78vw', height: '90vh' }}
+            className="video-card-container"
+          >
             {!isPlaying ? (
               <div className="video-thumbnail">
-                <img
-                  src={HeroImg}
-                  alt="Video thumbnail"
-                  className="thumbnail-image"
-                />
+                <img src="/assets/img/serv.webp" alt="Video thumbnail" className="thumbnail-image" />
                 <div className="play-button-overlay">
                   <h2 className="sr-watch viewwork2">View work</h2>
-
                 </div>
               </div>
             ) : (
@@ -225,75 +163,74 @@ const Product = () => {
             )}
           </div>
         </div>
+
         <p className="ui-hero-p scrollReveal">We craft end-to-end product designs that bring bold ideas to life - balancing aesthetics, usability, and functionality for market-ready impact.</p>
-        <img src={Blur1} className='p-blur1' alt="" />
-        <img src={Blur2} className='p-blur2' alt="" />
+        <img src="/assets/img/p-blur2.png" className='p-blur1' alt="" />
+        <img src="/assets/img/p-blur1.png" className='p-blur2' alt="" />
       </div>
 
       {/* =================provide=========== */}
       <div className="provide-con">
         <div className="sh-top uiux-hero">
-          <img src={Circleblur} alt="" />
+          <img src="/assets/img/sr-img.webp" alt="" />
           <h2 className="scrollReveal">What we provide</h2>
         </div>
 
         <div className="provide-grid">
           <div className="provide-card p-sec2-card1">
             <div className="p-top-card">
-              <img src={CardImg} alt="" />
+              <img src="/assets/img/ui-card.webp" alt="" />
               <div className="top-card-con">
-                <img src={Cardcon1} alt="" />
+                <img src="/assets/img/ui-card1.png" alt="" />
                 <p>Build your on MVP</p>
               </div>
             </div>
             <p className="provide-card-p">At Strix Productions, we design, develop, and deliver world-class visuals and experience</p>
-            <BtnNormsall text="Get a quote" to="/contact" />
+            <BtnNormsall text="View Work" to="/contact" />
           </div>
 
           <div className="provide-card p-sec2-card2">
             <div className="p-top-card">
-              <img src={CardImg} alt="" />
+              <img src="/assets/img/ui-card.webp" alt="" />
               <div className="top-card-con">
-                <img className="top-card-con1" src={Cardcon2} alt="" />
+                <img className="top-card-con1" src="/assets/img/ui-card2.png" alt="" />
                 <p>Hardware + Digital Interfaces</p>
               </div>
             </div>
             <p className="provide-card-p">At Strix Productions, we design, develop, and deliver world-class visuals and experience</p>
-            <BtnNormsall text="Get a quote" to="/contact" />
+            <BtnNormsall text="View Work" to="/contact" />
           </div>
 
           <div className="provide-card p-sec2-card1">
             <div className="p-top-card">
-              <img src={CardImg} alt="" />
+              <img src="/assets/img/ui-card.webp" alt="" />
               <div className="top-card-con">
-                <img src={Cardcon1} alt="" />
+                <img src="/assets/img/ui-card1.png" alt="" />
                 <p>Product Concept Development</p>
               </div>
             </div>
             <p className="provide-card-p">At Strix Productions, we design, develop, and deliver world-class visuals and experience</p>
-            <BtnNormsall text="Get a quote" to="/contact" />
+            <BtnNormsall text="view Work" to="/contact" />
           </div>
 
           <div className="provide-card p-sec2-card2">
             <div className="p-top-card">
-              <img src={CardImg} alt="" />
+              <img src="/assets/img/ui-card.webp" alt="" />
               <div className="top-card-con">
-                <img src={Cardcon1} alt="" />
+                <img src="/assets/img/ui-card1.png" alt="" />
                 <p>Interactive product mockup</p>
               </div>
             </div>
             <p className="provide-card-p">At Strix Productions, we design, develop, and deliver world-class visuals and experience</p>
-            <BtnNormsall text="Get a quote" to="/contact" />
+            <BtnNormsall text="View Work" to="/contact" />
           </div>
-
-
         </div>
       </div>
-
+      <NumbersSection />
       {/* ===================launch-fast================== */}
       <div className="product-launch-section">
         <div className="sh-top uiux-hero product-launch-hero">
-          <img src={Circleblur} alt="" />
+          <img src="/assets/img/sr-img.webp" alt="" />
           <h2 className="scrollReveal">Products That Launch Fast and Scale Clean</h2>
           <div className="product-launch-copy scrollReveal">
             <p>Strix Production works as a custom SaaS product development company that connects design, code, and production in one flow. No handoff gaps. No mixed direction. Work moves straight from idea to build with the same team.</p>
@@ -307,40 +244,42 @@ const Product = () => {
       </div>
 
       {/* ===================why================== */}
-      <div className="sh-top uiux-hero what-con">
-        <img src={Circleblur} alt="" />
+      <div className="sh-top uiux-hero what-con" style={{ marginBottom: 0, paddingBottom: 0 }}>
+        <img src="/assets/img/sr-img.webp" alt="" />
         <h2 className="scrollReveal">Why Choose us ?</h2>
         <p className="p-inde scrollReveal">Our UI/UX practice combines research, strategy, and sleek execution — helping startups and enterprises create designs that actually perform.</p>
       </div>
-
+      <WhyChooseUs />
       <div className='project-carousel-con'>
-        <CircleBlurAnimation className="ProjectCircle" src={ProjectCircle} />
-        <h2>Related Projects</h2>
+        <CircleBlurAnimation className="ProjectCircle" src="/assets/img/project-circle.webp" />
+        <h2 style={{ position: 'relative', zIndex: 10, color: '#000' }}>Related Projects</h2>
         <ProjectCarousel serviceFilter="App Design" />
       </div>
+
       <div className="uiuxproinfo">
         <p>Projects tailored to your industry or need are available on request.</p>
         <BtnNormsall className="scrollReveal" text='Know more' />
       </div>
 
       {/* ==================booking====================== */}
-      <div className="booking" >
+      <div className="booking">
         <h2 className='delay2'>Turn Your Vision Into an Experience That Lasts</h2>
         <div className="logo-slider logo-slider2">
           <div className="logo-track logo-track2">
             {[...Array(2)].map((_, i) => (
               <React.Fragment key={i}>
-                <img src={BookTxt} alt="" className="loop-img" />
-                <img src={BookTxt} alt="" className="loop-img" />
-                <img src={BookTxt} alt="" className="loop-img" />
-                <img src={BookTxt} alt="" className="loop-img" />
-                <img src={BookTxt} alt="" className="loop-img" />
-                <img src={BookTxt} alt="" className="loop-img" />
+                <img src="/assets/img/Book-txt.png" alt="" className="loop-img" />
+                <img src="/assets/img/Book-txt.png" alt="" className="loop-img" />
+                <img src="/assets/img/Book-txt.png" alt="" className="loop-img" />
+                <img src="/assets/img/Book-txt.png" alt="" className="loop-img" />
+                <img src="/assets/img/Book-txt.png" alt="" className="loop-img" />
+                <img src="/assets/img/Book-txt.png" alt="" className="loop-img" />
               </React.Fragment>
             ))}
           </div>
         </div>
       </div>
+
       <div className="smoothsection sectionCon faq-section">
         <FAQ
           faqData={faqData}
@@ -354,29 +293,3 @@ const Product = () => {
 }
 
 export default Product
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

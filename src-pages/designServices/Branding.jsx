@@ -30,8 +30,8 @@ import Stagger from '../../animations/stagger'
 import ScrollAnimation from '../../animations/scrollReveal'
 import SlideInFramerOnLoad from '../../animations/SlideInFramerOnLoad'
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-
-
+import WhyChooseUs from '@/components/WhyChooseUs';
+import NumbersSection from '@/components/NumbersSection';
 gsap.registerPlugin(ScrollTrigger);
 
 const Branding = () => {
@@ -227,14 +227,14 @@ const Branding = () => {
 
         </div>
       </div>
-
+      <NumbersSection />
       {/* ===================why================== */}
       <div className="sh-top uiux-hero what-con">
         <img src={Circleblur} alt="" />
         <h1 className="scrollReveal">Why Choose us ?</h1>
         <p className="p-inde scrollReveal">Our branding practice combines research, strategy, and sleek execution — helping startups and enterprises create brands that actually stand out.</p>
       </div>
-
+      <WhyChooseUs />
       <div className='project-carousel-con'>
         <CircleBlurAnimation className="ProjectCircle" src={ProjectCircle} />
         <h1>Related Projects</h1>
@@ -280,29 +280,3 @@ const Branding = () => {
 }
 
 export default Branding;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

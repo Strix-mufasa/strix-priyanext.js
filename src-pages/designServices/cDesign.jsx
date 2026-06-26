@@ -30,6 +30,9 @@ import Stagger from '../../animations/stagger'
 import ScrollAnimation from '../../animations/scrollReveal'
 import SlideInFramerOnLoad from '../../animations/SlideInFramerOnLoad'
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import WhyChooseUs from '@/components/WhyChooseUs';
+import NumbersSection from '@/components/NumbersSection';
+
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -185,7 +188,7 @@ const CreativeDesign = () => {
               </div>
             </div>
             <p className="provide-card-p">At Strix Productions, we design, develop, and deliver world-class visuals and experience</p>
-            <BtnNormsall text="Get a quote" to="/contact" />
+            <BtnNormsall text="View Work" to="/contact" />
           </div>
 
           <div className="provide-card p-sec2-card2">
@@ -197,7 +200,7 @@ const CreativeDesign = () => {
               </div>
             </div>
             <p className="provide-card-p">At Strix Productions, we design, develop, and deliver world-class visuals and experience</p>
-            <BtnNormsall text="Get a quote" to="/contact" />
+            <BtnNormsall text="View Work" to="/contact" />
           </div>
 
           <div className="provide-card p-sec2-card1">
@@ -209,7 +212,7 @@ const CreativeDesign = () => {
               </div>
             </div>
             <p className="provide-card-p">At Strix Productions, we design, develop, and deliver world-class visuals and experience</p>
-            <BtnNormsall text="Get a quote" to="/contact" />
+            <BtnNormsall text="View Work" to="/contact" />
           </div>
 
           <div className="provide-card p-sec2-card2">
@@ -221,20 +224,20 @@ const CreativeDesign = () => {
               </div>
             </div>
             <p className="provide-card-p">At Strix Productions, we design, develop, and deliver world-class visuals and experience</p>
-            <BtnNormsall text="Get a quote" to="/contact" />
+            <BtnNormsall text="View Work" to="/contact" />
           </div>
 
 
         </div>
       </div>
-
+      <NumbersSection />
       {/* ===================why================== */}
       <div className="sh-top uiux-hero what-con">
         <img src={Circleblur} alt="" />
         <h1 className="scrollReveal">Why Choose us ?</h1>
         <p className="p-inde scrollReveal">Our creative practice combines research, strategy, and sleek execution — helping startups and enterprises create designs that actually perform.</p>
       </div>
-
+      <WhyChooseUs />
       <div className='project-carousel-con'>
         <CircleBlurAnimation className="ProjectCircle" src={ProjectCircle} />
         <h1>Related Projects</h1>
